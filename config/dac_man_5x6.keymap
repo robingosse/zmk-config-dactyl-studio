@@ -11,16 +11,6 @@
         compatible = "zmk,keymap";
 
         default_layer {
-            // Commented layout is not actual layout.
-            // -------------------------------------------------------------------------------------------------------------------------
-            // |    6    |    7    |    8    |    9    |    0    |  BSPC   |
-            // |   TAB   |    Q    |    W    |    E    |    R    |    T    |                   |    Y    |    U    |    I    |    O    |    P    |    \    |
-            // |  LALT   |    A    |    S    |    D    |    F    |    G    |                   |    H    |    J    |    K    |    L    |    ;    |    '    |
-            // |  LCTRL  |    Z    |    X    |    C    |    V    |    B    |                   |    N    |    M    |    ,    |    .    |    /    |  RALT   |
-            //                     |    [    |    ]    |                                                           |    -    |    =    |
-            //                               | MO lay 1| SPACE   |                   | ENTER   | MO lay 2|
-            //                                         |   TAB   |   HOME  |   END   |   DEL   |
-            //                                         |  Raise  |    ~    |   GUI   |  Lower  |
 
             bindings = <
 &kp ESC  &kp N   &kp D     &kp O              &kp L   &kp LEFT_BRACKET                        &kp RIGHT_BRACKET     &kp T      &kp J      &kp Q      &kp U          &kp BACKSPACE
@@ -33,16 +23,6 @@
         };
 
         raise {
-            // commented layout is not actual layout.
-            // -------------------------------------------------------------------------------------------------------------------------
-            // |   esc   |    1    |    2    |    3    |    4    |    5    |                   |    6    |    7    |    8    |    9    |    0    |  bspc   |
-            // |   tab   |    q    |    w    |    e    |    r    |    t    |                   |    y    |    u    |    i    |    o    |    p    |    \    |
-            // |  lalt   |    a    |    s    |    d    |    f    |    g    |                   |    h    |    j    |    k    |    l    |    ;    |    '    |
-            // |  lctrl  |    z    |    x    |    c    |    v    |    b    |                   |    n    |    m    |    ,    |    .    |    /    |  ralt   |
-            //                     |    [    |    ]    |                                                           |    -    |    =    |
-            //                               | mo lay 1| space   |                   | enter   | mo lay 2|
-            //                                         |   tab   |   home  |   end   |   del   |
-            //                                         |  raise  |    ~    |   gui   |  lower  |
 
             bindings = <
 &kp ESC  &kp N   &kp D     &kp O              &kp L   &kp LEFT_BRACKET                        &kp RIGHT_BRACKET     &kp T      &kp J      &kp Q      &kp U          &kp BACKSPACE
@@ -55,16 +35,6 @@
         };
 
         lower {
-            // commented layout is not actual layout.
-            // -------------------------------------------------------------------------------------------------------------------------
-            // |   esc   |    1    |    2    |    3    |    4    |    5    |                   |    6    |    7    |    8    |    9    |    0    |  bspc   |
-            // |   tab   |    q    |    w    |    e    |    r    |    t    |                   |    y    |    u    |    i    |    o    |    p    |    \    |
-            // |  lalt   |    a    |    s    |    d    |    f    |    g    |                   |    h    |    j    |    k    |    l    |    ;    |    '    |
-            // |  lctrl  |    z    |    x    |    c    |    v    |    b    |                   |    n    |    m    |    ,    |    .    |    /    |  ralt   |
-            //                     |    [    |    ]    |                                                           |    -    |    =    |
-            //                               | mo lay 1| space   |                   | enter   | mo lay 2|
-            //                                         |   tab   |   home  |   end   |   del   |
-            //                                         |  raise  |    ~    |   gui   |  lower  |
 
             bindings = <
 &kp ESC  &kp N   &kp D     &kp O              &kp L   &kp LEFT_BRACKET                        &kp RIGHT_BRACKET     &kp T      &kp J      &kp Q      &kp U          &kp BACKSPACE
