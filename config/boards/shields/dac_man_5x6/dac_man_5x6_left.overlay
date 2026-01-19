@@ -6,6 +6,7 @@
 / {
     chosen {
         zmk,kscan = &kscan0;
+        status = "okay";
     };
 };
 
