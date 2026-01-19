@@ -1,6 +1,6 @@
 ---
 include:
   - board: nice_nano
-    shield: dac_man_5x6_left studio-rpc-usb-uart
+    shield: dac_man_5x6_left
   - board: nice_nano
     shield: dac_man_5x6_right
