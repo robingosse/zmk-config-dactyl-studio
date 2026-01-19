@@ -1,4 +1,4 @@
-#include "dac_man_5x6.dtsi"  // <--- THIS WAS MISSING!
+#include "dac_man_5x6.dtsi"  // <--- CRITICAL: This connects the "Brain" to the "Hand"
 #include <dt-bindings/zmk/matrix_transform.h>
 
 / {
