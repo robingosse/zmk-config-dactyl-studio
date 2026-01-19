@@ -1,11 +1,20 @@
-#include "dac_man_5x6.dtsi"
+// dac_man_5x6_right.overlay
 
-&default_transform {
-    col-offset = <6>;
-};
+#include <dt-bindings/zmk/matrix_transform.h>
 
-&kscan0 {
-    diode-direction = "row2col";
+/ {
+    chosen {
+        zmk,kscan = &kscan0;
+    };
+
+    default_transform: keymap_transform_0 {
+        col-offset = <6>;
+    };
+
+    kscan0: kscan_0 {
+        compatible = "zmk,kscan-gpio-matrix";
+        label = "KSCAN";
+        diode-direction = "row2col";
     
     // PINS FOR LEFT SIDE
         row-gpios
@@ -25,3 +34,5 @@
             , <&gpio1 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
             ;
     };
+};
+
