@@ -2,6 +2,12 @@
 
 #include "dac_man_5x6.dtsi"
 
+/ {
+    chosen {
+        zmk,kscan = &kscan0;
+    };
+};
+
     &kscan0 {
         diode-direction = "row2col";
 
