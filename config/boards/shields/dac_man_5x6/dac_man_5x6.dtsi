@@ -42,7 +42,7 @@
     };
 
     // --- ADDED THIS BLOCK TO FIX THE ERROR ---
-    kscan0: kscan_0 {
+    &kscan0: kscan_0 {
         compatible = "zmk,kscan-gpio-matrix";
         label = "KSCAN";
         // We define the PINS in the overlay, but the object must exist here.
