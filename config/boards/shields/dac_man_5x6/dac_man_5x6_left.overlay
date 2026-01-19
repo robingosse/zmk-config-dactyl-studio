@@ -1,4 +1,6 @@
-&kscan0 {
+#include "dac_man_5x6.dtsi"
+
+kscan0 {
     diode-direction = "col2row";
 
     col-gpios
