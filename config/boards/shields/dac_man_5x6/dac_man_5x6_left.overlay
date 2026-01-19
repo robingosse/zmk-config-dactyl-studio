@@ -2,11 +2,8 @@
 
 #include "dac_man_5x6.dtsi"
 
-/ {
-
-    kscan0: kscan0 {
-        compatible = "zmk,kscan-gpio-matrix";
-        diode-direction = "col2row";
+&kscan0 {
+    diode-direction = "col2row";
 
     col-gpios
         = <&gpio0 17 GPIO_ACTIVE_LOW>
@@ -24,5 +21,4 @@
         , <&gpio1 15 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
         , <&gpio1 13 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
         ;
-    };
 };
