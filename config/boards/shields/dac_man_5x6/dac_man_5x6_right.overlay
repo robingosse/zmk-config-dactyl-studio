@@ -2,8 +2,9 @@
 
 / {
 
-kscan0 {
-    diode-direction = "row2col";
+    kscan0: kscan0 {
+        compatible = "zmk,kscan-gpio-matrix";
+        diode-direction = "row2col";
 
     /* rows are inputs */
     row-gpios
