@@ -3,8 +3,10 @@
 #include <dt-bindings/zmk/keys.h>
 
 #define DEFAULT 0
-#define RAISE   1
-#define LOWER   2
+#define LAYER1   1
+#define LAYER2   2
+#define LAYER3   3
+#define LAYER4   4
 
 / {
     keymap {
@@ -22,7 +24,7 @@
             >;
         };
 
-        raise {
+        layer1 {
 
             bindings = <
 &kp ESC  &kp N   &kp D     &kp O              &kp L   &kp LEFT_BRACKET                        &kp RIGHT_BRACKET     &kp T      &kp J      &kp Q      &kp U          &kp BACKSPACE
@@ -34,7 +36,7 @@
             >;
         };
 
-        lower {
+        layer2 {
 
             bindings = <
 &kp ESC  &kp N   &kp D     &kp O              &kp L   &kp LEFT_BRACKET                        &kp RIGHT_BRACKET     &kp T      &kp J      &kp Q      &kp U          &kp BACKSPACE
@@ -44,6 +46,29 @@
                                                 &kp SPACE   &kp N3   &kp N3         &kp RCTRL  &kp RCMD &kp N3
                                                 &Kp SPACE   &kp N3   &kp N3         &kp RCTRL  &kp RCMD &kp N3
             >;
+        };
+
+        layer3 {
+
+            bindings = <
+&kp ESC  &kp N   &kp D     &kp O              &kp L   &kp LEFT_BRACKET                        &kp RIGHT_BRACKET     &kp T      &kp J      &kp Q      &kp U          &kp BACKSPACE
+&kp TAB    &kp R   &kp S     &kp H              &kp W   &kp B                                 &kp H                 &kp O      &kp Y      &kp G      &mt F          &kp DEL
+&kp LCTRL  &kp Z   &kp X     &kp C              &kp V   &kp 1                                 &kp 2                 &kp A      &kp I      &kp K      &kp M          &kp ENTER
+                   &kp UP_ARROW  &kp &kp DOWN_ARROW                                                                     &kp LEFT_ARROW  &kp RIGHT_ARROW
+                                                &kp SPACE   &kp N3   &kp N3         &kp RCTRL  &kp RCMD &kp N3
+                                                &Kp SPACE   &kp N3   &kp N3         &kp RCTRL  &kp RCMD &kp N3
+            >;
+        };
+
+        layer4 {
+
+            bindings = <
+&kp ESC  &kp N   &kp D     &kp O              &kp L   &kp LEFT_BRACKET                        &kp RIGHT_BRACKET     &kp T      &kp J      &kp Q      &kp U          &kp BACKSPACE
+&kp TAB    &kp R   &kp S     &kp H              &kp W   &kp B                                 &kp H                 &kp O      &kp Y      &kp G      &mt F          &kp DEL
+&kp LCTRL  &kp Z   &kp X     &kp C              &kp V   &kp 1                                 &kp 2                 &kp A      &kp I      &kp K      &kp M          &kp ENTER
+                   &kp UP_ARROW  &kp &kp DOWN_ARROW                                                                     &kp LEFT_ARROW  &kp RIGHT_ARROW
+                                                &kp SPACE   &kp N3   &kp N3         &kp RCTRL  &kp RCMD &kp N3
+                                                &Kp SPACE   &kp N3   &kp N3         &kp RCTRL  &kp RCMD &kp N3
             >;
         };
     };
