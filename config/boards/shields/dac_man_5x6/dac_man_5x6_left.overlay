@@ -1,5 +1,7 @@
 #include "dac_man_5x6.dtsi"
 
+/ {
+
 kscan0 {
     diode-direction = "col2row";
 
@@ -19,4 +21,5 @@ kscan0 {
         , <&gpio1 15 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
         , <&gpio1 13 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
         ;
+    };
 };
