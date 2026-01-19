@@ -12,28 +12,111 @@
         compatible = "zmk,matrix-transform";
         columns = <12>;
         rows = <5>; 
+
         map = <
+        // ROW 1: Top Row (6 keys)
         RC(0,0) RC(0,1) RC(0,2) RC(0,3) RC(0,4) RC(0,5)    RC(0,6) RC(0,7) RC(0,8) RC(0,9) RC(0,10) RC(0,11)
+        
+        // ROW 2: Middle Row (6 keys)
         RC(1,0) RC(1,1) RC(1,2) RC(1,3) RC(1,4) RC(1,5)    RC(1,6) RC(1,7) RC(1,8) RC(1,9) RC(1,10) RC(1,11)
+        
+        // ROW 3: Bottom Row (6 keys)
         RC(2,0) RC(2,1) RC(2,2) RC(2,3) RC(2,4) RC(2,5)    RC(2,6) RC(2,7) RC(2,8) RC(2,9) RC(2,10) RC(2,11)
-                                RC(3,2) RC(3,3)                    RC(3,9) RC(3,8)
-                        RC(3,4) RC(3,5) RC(4,3)    RC(4,9) RC(3,11) RC(4,4)
-                        RC(4,5) RC(4,11) RC(4,10)
+        
+        // ROW 4: Thumb Top (3 keys) - Mapped to Pin 3
+        // Note: I mapped these to the inner columns (2,3,4) for now
+                        RC(3,2) RC(3,3) RC(3,4)            RC(3,7) RC(3,8) RC(3,9)
+
+        // ROW 5: Thumb Bottom (3 keys) - Mapped to Pin 4
+                        RC(4,2) RC(4,3) RC(4,4)            RC(4,7) RC(4,8) RC(4,9)
         >;
     };
 
-    // The empty scanner shell
+    // The empty scanner shell (Pins are defined in the overlays)
     kscan0: kscan_0 {
         compatible = "zmk,kscan-gpio-matrix";
         label = "KSCAN";
-        // No diode direction here - handled in overlays!
     };
 
+    // THIS IS THE BLOCK ZMK STUDIO WAS MISSING
     physical_layout0: physical_layout_0 {
         compatible = "zmk,physical-layout";
-        display-name = "Dactyl Manuform 4x6";
+        display-name = "Dactyl Manuform 3x6+Thumbs";
         transform = <&default_transform>;
         kscan = <&kscan0>;
-        keys = <&key_physical_attrs 100 100 0 0 0 0 0>;
+        
+        // Based on your diagram: 3x6 main block, 2x3 thumb block
+        keys = <
+            // --- LEFT HAND ---
+            // Row 1 (Top)
+            &key_physical_attrs 100 100   0   0   0 0 0
+            &key_physical_attrs 100 100 100   0   0 0 0
+            &key_physical_attrs 100 100 200   0   0 0 0
+            &key_physical_attrs 100 100 300   0   0 0 0
+            &key_physical_attrs 100 100 400   0   0 0 0
+            &key_physical_attrs 100 100 500   0   0 0 0
+            
+            // Row 2 (Mid)
+            &key_physical_attrs 100 100   0 100   0 0 0
+            &key_physical_attrs 100 100 100 100   0 0 0
+            &key_physical_attrs 100 100 200 100   0 0 0
+            &key_physical_attrs 100 100 300 100   0 0 0
+            &key_physical_attrs 100 100 400 100   0 0 0
+            &key_physical_attrs 100 100 500 100   0 0 0
+
+            // Row 3 (Bot)
+            &key_physical_attrs 100 100   0 200   0 0 0
+            &key_physical_attrs 100 100 100 200   0 0 0
+            &key_physical_attrs 100 100 200 200   0 0 0
+            &key_physical_attrs 100 100 300 200   0 0 0
+            &key_physical_attrs 100 100 400 200   0 0 0
+            &key_physical_attrs 100 100 500 200   0 0 0
+
+            // Thumb Top (Row 4)
+            &key_physical_attrs 100 100 300 300   0 0 0
+            &key_physical_attrs 100 100 400 300   0 0 0
+            &key_physical_attrs 100 100 500 300   0 0 0
+
+            // Thumb Bot (Row 5)
+            &key_physical_attrs 100 100 300 400   0 0 0
+            &key_physical_attrs 100 100 400 400   0 0 0
+            &key_physical_attrs 100 100 500 400   0 0 0
+
+
+            // --- RIGHT HAND (Mirrored) ---
+            // Row 1 (Top)
+            &key_physical_attrs 100 100 700   0   0 0 0
+            &key_physical_attrs 100 100 800   0   0 0 0
+            &key_physical_attrs 100 100 900   0   0 0 0
+            &key_physical_attrs 100 100 1000  0   0 0 0
+            &key_physical_attrs 100 100 1100  0   0 0 0
+            &key_physical_attrs 100 100 1200  0   0 0 0
+
+            // Row 2 (Mid)
+            &key_physical_attrs 100 100 700 100   0 0 0
+            &key_physical_attrs 100 100 800 100   0 0 0
+            &key_physical_attrs 100 100 900 100   0 0 0
+            &key_physical_attrs 100 100 1000 100  0 0 0
+            &key_physical_attrs 100 100 1100 100  0 0 0
+            &key_physical_attrs 100 100 1200 100  0 0 0
+
+            // Row 3 (Bot)
+            &key_physical_attrs 100 100 700 200   0 0 0
+            &key_physical_attrs 100 100 800 200   0 0 0
+            &key_physical_attrs 100 100 900 200   0 0 0
+            &key_physical_attrs 100 100 1000 200  0 0 0
+            &key_physical_attrs 100 100 1100 200  0 0 0
+            &key_physical_attrs 100 100 1200 200  0 0 0
+
+            // Thumb Top (Row 4)
+            &key_physical_attrs 100 100 700 300   0 0 0
+            &key_physical_attrs 100 100 800 300   0 0 0
+            &key_physical_attrs 100 100 900 300   0 0 0
+
+            // Thumb Bot (Row 5)
+            &key_physical_attrs 100 100 700 400   0 0 0
+            &key_physical_attrs 100 100 800 400   0 0 0
+            &key_physical_attrs 100 100 900 400   0 0 0
+        >;
     };
 };
