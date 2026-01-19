@@ -1,7 +1,7 @@
 #include "dac_man_5x6.dtsi"
 #include <dt-bindings/led/led.h>
 
-    kscan0: kscan {
+    &kscan0: kscan {
         compatible = "zmk,kscan-gpio-matrix";
         label = "KSCAN";
 
