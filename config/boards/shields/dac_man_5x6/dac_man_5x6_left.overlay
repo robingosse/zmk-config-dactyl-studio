@@ -1,4 +1,4 @@
-// dac_man_5x6_left.overlay
+#include "dac_man_5x6.dtsi"  // <--- THIS WAS MISSING!
 #include <dt-bindings/zmk/matrix_transform.h>
 
 / {
@@ -6,8 +6,6 @@
         zmk,kscan = &kscan0;
     };
 
-    // Notice: We are still inside the / { } block!
-    
     kscan0: kscan_0 {
         compatible = "zmk,kscan-gpio-matrix";
         label = "KSCAN";
