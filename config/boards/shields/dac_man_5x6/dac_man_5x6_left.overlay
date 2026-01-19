@@ -1,31 +1,20 @@
-#include "dac_man_5x6.dtsi"  // <--- CRITICAL: This connects the "Brain" to the "Hand"
-#include <dt-bindings/zmk/matrix_transform.h>
+#include "dac_man_5x6.dtsi"
 
-/ {
-    chosen {
-        zmk,kscan = &kscan0;
-    };
-
-    kscan0: kscan_0 {
-        compatible = "zmk,kscan-gpio-matrix";
-        label = "KSCAN";
-        diode-direction = "col2row";
-
-        col-gpios
-            = <&gpio0 17 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            , <&gpio0 20 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            , <&gpio0 22 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            , <&gpio1 0  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            , <&gpio0 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            , <&gpio1 4  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            ;
-
-        row-gpios
-            = <&gpio0 31 GPIO_ACTIVE_HIGH>
-            , <&gpio0 29 GPIO_ACTIVE_HIGH>
-            , <&gpio0 2  GPIO_ACTIVE_HIGH>
-            , <&gpio1 15 GPIO_ACTIVE_HIGH>
-            , <&gpio1 13 GPIO_ACTIVE_HIGH>
-            ;
-    };
-}; // <--- Root node closes HERE at the very end
+&kscan0 {
+    diode-direction = "col2row";
+    col-gpios
+        = <&gpio0 17 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        , <&gpio0 20 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        , <&gpio0 22 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        , <&gpio1 0  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        , <&gpio0 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        , <&gpio1 4  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        ;
+    row-gpios
+        = <&gpio0 31 GPIO_ACTIVE_HIGH>
+        , <&gpio0 29 GPIO_ACTIVE_HIGH>
+        , <&gpio0 2  GPIO_ACTIVE_HIGH>
+        , <&gpio1 15 GPIO_ACTIVE_HIGH>
+        , <&gpio1 13 GPIO_ACTIVE_HIGH>
+        ;
+};
