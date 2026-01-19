@@ -6,6 +6,7 @@
     chosen {
         zmk,kscan = &kscan0;
     };
+};
 
     &kscan0: kscan_0 {
         compatible = "zmk,kscan-gpio-matrix";
@@ -29,4 +30,3 @@
             , <&gpio1 13 GPIO_ACTIVE_HIGH>
             ;
     };
-};
