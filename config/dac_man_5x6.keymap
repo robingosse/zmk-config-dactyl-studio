@@ -32,19 +32,6 @@
             >;
         };
 
-        mine {
-            bindings = <
-&trans  &trans          &trans     &trans        &trans          &trans                  &kp C_PLAY_PAUSE  &trans  &trans  &trans  &trans  &kp C_VOLUME_UP
-&trans  &trans          &trans     &trans        &trans          &trans                  &trans            &trans  &trans  &trans  &trans  &kp C_VOL_DN
-&trans  &kp LEFT_ARROW  &kp RIGHT  &kp UP_ARROW  &kp DOWN_ARROW  &trans                  &trans            &trans  &trans  &trans  &trans  &kp K_MUTE
-&trans  &trans          &trans     &trans        &trans          &trans                  &trans            &trans  &trans  &trans  &trans  &studio_unlock
-                        &trans     &trans                                                                          &trans  &trans
-                                                 &trans                                                    &trans
-                                                                 &trans  &trans  &trans  &trans
-                                                                 &trans  &trans  &trans  &trans
-            >;
-        };
-
         raise {
             // commented layout is not actual layout.
             // -------------------------------------------------------------------------------------------------------------------------
@@ -58,14 +45,12 @@
             //                                         |  raise  |    ~    |   gui   |  lower  |
 
             bindings = <
-&bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2   &bt BT_SEL 3   &bt BT_SEL 4   &bt BT_SEL 5                   &kp F6       &kp F7  &kp F8  &kp F9  &kp F10    &studio_unlock
-&bt BT_DISC 0  &bt BT_DISC 1  &bt BT_DISC 2  &bt BT_DISC 3  &bt BT_DISC 4  &bt BT_DISC 5                  &kp RBKT     &kp 7   &kp 8   &kp 9   &trans     &kp F12
-&bt BT_NXT     &bt BT_PRV     &kp PG_UP      &kp PG_DN      &kp END        &kp LPAR                       &kp RPAR     &kp 4   &kp 5   &kp 6   &kp MINUS  &kp PIPE
-&bt BT_CLR     &trans         &trans         &trans         &trans         &sys_reset                     &bootloader  &kp 1   &kp 2   &kp 3   &kp FSLH   &kp UNDER
-                              &trans         &kp PSCRN                                                                         &trans  &trans
-                                                            &trans                                                     &trans
-                                                                           &trans  &trans            &trans  &trans
-                                                                           &trans  &trans            &trans  &trans
+&kp ESC  &kp N   &kp D     &kp O              &kp L   &kp LEFT_BRACKET                        &kp RIGHT_BRACKET     &kp T      &kp J      &kp Q      &kp U          &kp BACKSPACE
+&kp TAB    &kp R   &kp S     &kp H              &kp W   &kp B                                 &kp H                 &kp O      &kp Y      &kp G      &mt F          &kp DEL
+&kp LCTRL  &kp Z   &kp X     &kp C              &kp V   &kp 1                                 &kp 2                 &kp A      &kp I      &kp K      &kp M          &kp ENTER
+                   &kp UP_ARROW  &kp &kp DOWN_ARROW                                                                     &kp LEFT_ARROW  &kp RIGHT_ARROW
+                                                &kp SPACE   &kp N3   &kp N3         &kp RCTRL  &kp RCMD &kp N3
+                                                &Kp SPACE   &kp N3   &kp N3         &kp RCTRL  &kp RCMD &kp N3
             >;
         };
 
@@ -82,14 +67,13 @@
             //                                         |  raise  |    ~    |   gui   |  lower  |
 
             bindings = <
-&kp GRAVE  &kp F1    &kp F2      &kp F3    &kp F4      &kp F5                        &kp F6      &kp F7      &kp F8   &kp F9    &kp F10  &kp F11
-&trans     &trans    &kp K_PREV  &kp K_PP  &kp K_NEXT  &kp C_VOL_UP                  &kp K_CALC  &kp KP_NUM  &kp INS  &kp SLCK  &trans   &kp F12
-&trans     &kp LEFT  &kp UP      &kp DOWN  &kp RIGHT   &kp C_VOL_DN                  &trans      &kp H       &kp J    &kp K     &kp L    &trans
-&trans     &trans    &trans      &trans    &trans      &kp C_MUTE                    &trans      &trans      &trans   &trans    &trans   &trans
-                     &trans      &trans                                                                      &trans   &trans
-                                           &trans                                                &trans
-                                                       &trans        &trans  &trans  &trans
-                                                       &trans        &trans  &trans  &trans
+&kp ESC  &kp N   &kp D     &kp O              &kp L   &kp LEFT_BRACKET                        &kp RIGHT_BRACKET     &kp T      &kp J      &kp Q      &kp U          &kp BACKSPACE
+&kp TAB    &kp R   &kp S     &kp H              &kp W   &kp B                                 &kp H                 &kp O      &kp Y      &kp G      &mt F          &kp DEL
+&kp LCTRL  &kp Z   &kp X     &kp C              &kp V   &kp 1                                 &kp 2                 &kp A      &kp I      &kp K      &kp M          &kp ENTER
+                   &kp UP_ARROW  &kp &kp DOWN_ARROW                                                                     &kp LEFT_ARROW  &kp RIGHT_ARROW
+                                                &kp SPACE   &kp N3   &kp N3         &kp RCTRL  &kp RCMD &kp N3
+                                                &Kp SPACE   &kp N3   &kp N3         &kp RCTRL  &kp RCMD &kp N3
+            >;
             >;
         };
     };
