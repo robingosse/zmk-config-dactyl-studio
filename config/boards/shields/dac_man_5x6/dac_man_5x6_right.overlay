@@ -8,10 +8,6 @@
     };
 };
 
-    default_transform: keymap_transform_0 {
-        col-offset = <6>;
-    };
-
     &kscan0: kscan_0 {
         compatible = "zmk,kscan-gpio-matrix";
         label = "KSCAN";
