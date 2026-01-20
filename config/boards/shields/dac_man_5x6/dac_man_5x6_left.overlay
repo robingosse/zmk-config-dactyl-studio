@@ -6,28 +6,29 @@
 / {
     chosen {
         zmk,kscan = &kscan0;
-        status = "okay";
     };
 };
 
-/* Override the shared kscan0 node, do NOT redefine it */
 &kscan0 {
+    status = "okay";
     diode-direction = "col2row";
 
+    /* INPUTS: rows need pull-ups so they don't float */
     row-gpios
-        = <&gpio0 31 GPIO_ACTIVE_LOW>
-        , <&gpio0 29 GPIO_ACTIVE_LOW>
-        , <&gpio0 2  GPIO_ACTIVE_LOW>
-        , <&gpio1 15 GPIO_ACTIVE_LOW>
-        , <&gpio1 13 GPIO_ACTIVE_LOW>
+        = <&gpio0 31 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+        , <&gpio0 29 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+        , <&gpio0 2  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+        , <&gpio1 15 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+        , <&gpio1 13 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
         ;
 
+    /* OUTPUTS: columns get no pulls */
     col-gpios
-        = <&gpio0 17 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
-        , <&gpio0 20 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
-        , <&gpio0 22 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
-        , <&gpio1 0  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
-        , <&gpio0 11 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
-        , <&gpio1 4  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+        = <&gpio0 17 GPIO_ACTIVE_LOW>
+        , <&gpio0 20 GPIO_ACTIVE_LOW>
+        , <&gpio0 22 GPIO_ACTIVE_LOW>
+        , <&gpio1 0  GPIO_ACTIVE_LOW>
+        , <&gpio0 11 GPIO_ACTIVE_LOW>
+        , <&gpio1 4  GPIO_ACTIVE_LOW>
         ;
 };
