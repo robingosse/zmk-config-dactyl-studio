@@ -12,16 +12,27 @@
     keymap {
         compatible = "zmk,keymap";
 
+                                            /*
+                                                    default_layer {
+                                            
+                                                        bindings = <
+                                            &kp ESC    &kp N   &kp D     &kp O              &kp L   &kp LEFT_BRACKET                      &kp RIGHT_BRACKET     &kp T      &kp J      &kp Q      &kp U          &kp BACKSPACE
+                                            &kp TAB    &kp R   &kp S     &kp H              &kp W   &kp B                                 &kp E                 &kp O      &kp Y      &kp G      &kp F          &kp DEL
+                                            &kp LCTRL  &kp Z   &kp X     &kp C              &kp V   &kp 1                                 &kp 2                 &kp A      &kp I      &kp K      &kp M          &kp ENTER
+                                                               &kp UP_ARROW  &kp DOWN_ARROW                                                                     &kp LEFT_ARROW  &kp RIGHT_ARROW
+                                                                                            &kp SPACE   &kp N3   &kp N3         &kp RCTRL  &kp RCMD &kp N3
+                                                                                            &kp A   &kp B   &kp C         &kp D  &kp E &kp F
+                                            */ 
         default_layer {
 
             bindings = <
-&kp ESC    &kp N   &kp D     &kp O              &kp L   &kp LEFT_BRACKET                      &kp RIGHT_BRACKET     &kp T      &kp J      &kp Q      &kp U          &kp BACKSPACE
-&kp TAB    &kp R   &kp S     &kp H              &kp W   &kp B                                 &kp E                 &kp O      &kp Y      &kp G      &kp F          &kp DEL
-&kp LCTRL  &kp Z   &kp X     &kp C              &kp V   &kp 1                                 &kp 2                 &kp A      &kp I      &kp K      &kp M          &kp ENTER
-                   &kp UP_ARROW  &kp DOWN_ARROW                                                                     &kp LEFT_ARROW  &kp RIGHT_ARROW
-                                                &kp SPACE   &kp N3   &kp N3         &kp RCTRL  &kp RCMD &kp N3
-                                                &kp A   &kp B   &kp C         &kp D  &kp E &kp F
-            >;
+&none    &kp N   &kp D         &kp O              &kp L   &kp LEFT_BRACKET                      &kp RIGHT_BRACKET     &kp T           &kp J      &kp Q      &kp U          &none
+&none    &kp R   &kp S         &kp H              &kp W   &kp B                                 &kp E                 &kp O           &kp Y      &kp G      &kp F          &none
+&none    &kp Z   &kp X         &kp C              &kp V   &kp 1                                 &kp 2                 &kp A           &kp I      &kp K      &kp M          &none
+                 &kp UP_ARROW  &kp DOWN_ARROW                                                                   &kp LEFT_ARROW  &kp RIGHT_ARROW
+                                                &none   &none   &none        &none  &none  &none
+                                                &none   &none   &none        &none  &none  &none
+>;
         };
 
         layer1 {
