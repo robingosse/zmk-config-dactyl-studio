@@ -11,8 +11,7 @@
 
 &kscan0 {
     status = "okay";
-    diode-direction = "col2row"; /* keep for now; see diode note below */
-
+    diode-direction = "row2col"; /* keep for now; see diode note below */
 
     col-gpios
         = <&gpio0 17 GPIO_ACTIVE_LOW>
@@ -23,7 +22,6 @@
         , <&gpio1 4  GPIO_ACTIVE_LOW>
         ;
 
-
     row-gpios
         = <&gpio0 31 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
         , <&gpio0 29 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
@@ -32,5 +30,3 @@
         , <&gpio1 13 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
         ;
 };
-
-
