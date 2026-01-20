@@ -11,7 +11,7 @@
 
 &kscan0 {
     status = "okay";
-    diode-direction = "col2row";
+    diode-direction = "row2col";
 
     /* rows are inputs -> MUST have pull-ups */
     row-gpios
