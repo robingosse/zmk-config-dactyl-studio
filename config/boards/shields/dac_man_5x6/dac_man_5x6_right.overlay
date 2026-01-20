@@ -14,15 +14,6 @@
     diode-direction = "row2col";
 
     /* rows are inputs -> MUST have pull-ups */
-    row-gpios
-        = <&gpio0 31 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
-        , <&gpio0 29 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
-        , <&gpio0 2  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
-        , <&gpio1 15 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
-        , <&gpio1 13 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
-        ;
-
-    /* cols are outputs -> NO pulls */
     col-gpios
         = <&gpio0 17 GPIO_ACTIVE_LOW>
         , <&gpio0 20 GPIO_ACTIVE_LOW>
@@ -30,5 +21,13 @@
         , <&gpio1 0  GPIO_ACTIVE_LOW>
         , <&gpio0 11 GPIO_ACTIVE_LOW>
         , <&gpio1 4  GPIO_ACTIVE_LOW>
+        ;
+
+    row-gpios
+        = <&gpio0 31 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+        , <&gpio0 29 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+        , <&gpio0 2  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+        , <&gpio1 15 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+        , <&gpio1 13 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
         ;
 };
