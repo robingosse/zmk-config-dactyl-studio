@@ -3,7 +3,7 @@
 #include <dt-bindings/gpio/gpio.h>
 // #include "dac_man_5x6.dtsi"
 
-kscan {
+&kscan {
     status = "okay";
     diode-direction = "col2row";
 
