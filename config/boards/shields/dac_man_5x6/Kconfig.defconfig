@@ -7,8 +7,3 @@ config ZMK_KEYBOARD_NAME
     default y
 
 endif
-
-if SHIELD_DAC_MAN_5X6_RIGHT
-
-config ZMK_KEYBOARD_NAME
-    default "Dac-Man-5x6-R"
