@@ -9,16 +9,6 @@
     };
 };
 
-&kscan {
-    status = "okay";
-    diode-direction = "col2row";
-
-    col-gpios = <&gpio0 17 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
-    row-gpios = <&gpio0 31 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
-};
-
-
-/*
 &kscan0 {
     status = "okay";
     diode-direction = "col2row";
@@ -40,4 +30,3 @@
         , <&gpio1 13 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
         ;
 };
-*/
