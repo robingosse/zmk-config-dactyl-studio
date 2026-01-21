@@ -5,11 +5,19 @@
 #include <physical_layouts.dtsi>
 
 / {
+    kscan: kscan {
+        compatible = "zmk,kscan-gpio-matrix";
+        status = "disabled";          /* overlays will enable per-half */
+        diode-direction = "col2row";
+        row-gpios = <>;
+        col-gpios = <>;
+    };
+
     chosen {
         zmk,kscan = &kscan;
         zmk,physical-layout = &physical_layout0;
     };
-
+};
     default_transform: keymap_transform_0 {
         compatible = "zmk,matrix-transform";
         columns = <12>;
