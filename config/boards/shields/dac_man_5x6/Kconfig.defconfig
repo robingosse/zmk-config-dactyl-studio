@@ -4,7 +4,7 @@ config ZMK_KEYBOARD_NAME
     default "Dac-Man-5x6-L"
 
  config ZMK_SPLIT_BLE_ROLE_CENTRAL
-    default n
+    default y
 
 endif
 
