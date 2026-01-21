@@ -1,7 +1,7 @@
 /* dac_man_5x6_left.overlay */
 
 #include <dt-bindings/gpio/gpio.h>
-#include "dac_man_5x6.dtsi"
+// #include "dac_man_5x6.dtsi"
 
 / {
     chosen {
