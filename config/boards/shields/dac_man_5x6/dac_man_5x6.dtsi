@@ -35,7 +35,7 @@
         compatible = "zmk,physical-layout";
         display-name = "Dactyl Manuform 5x6";
         transform = <&default_transform>;
-        kscan = <&kscan0>;
+        kscan = <&kscan>;
 
         keys
             = <&key_physical_attrs 100 100   0   0 0 0 0>
