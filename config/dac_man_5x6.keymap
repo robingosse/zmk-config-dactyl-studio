@@ -23,7 +23,8 @@
                                                 &kp SPACE   &kp N3   &kp N4         &kp RCTRL  &kp RCMD &kp N5
                                                 &kp A   &kp B   &kp C         &kp D  &kp E &kp F
                                           
-
+            >;
+        };
 
         layer1 {
 
