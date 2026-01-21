@@ -5,7 +5,7 @@
 
 &kscan {
     status = "okay";
-    diode-direction = "col2row";
+    diode-direction = "row2col";
 
     col-gpios
         = <&gpio0 17 GPIO_ACTIVE_LOW>
