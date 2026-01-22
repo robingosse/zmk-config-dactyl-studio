@@ -24,6 +24,3 @@
         , <&gpio1 13 GPIO_ACTIVE_LOW>
         ;
 };
-&default_transform {
-    col-offset = <0>;
-};
