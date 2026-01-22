@@ -5,25 +5,27 @@
 
 &kscan {
     status = "okay";
-    diode-direction = "row2col";  // <--- BACK TO ROW2COL
+    diode-direction = "row2col";
 
+    /* REVERSED COLUMN ORDER to fix "Mirror Typing" */
     col-gpios
-        = <&gpio0 17 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> // <--- PULL_UP MOVED HERE
-        , <&gpio0 20 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
-        , <&gpio0 22 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
-        , <&gpio1 0  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+        = <&gpio1 4  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
         , <&gpio0 11 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
-        , <&gpio1 4  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+        , <&gpio1 0  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+        , <&gpio0 22 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+        , <&gpio0 20 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+        , <&gpio0 17 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
         ;
 
     row-gpios
-        = <&gpio0 31 GPIO_ACTIVE_LOW> // <--- NO PULL_UP HERE
+        = <&gpio0 31 GPIO_ACTIVE_LOW>
         , <&gpio0 29 GPIO_ACTIVE_LOW>
         , <&gpio0 2  GPIO_ACTIVE_LOW>
         , <&gpio1 15 GPIO_ACTIVE_LOW>
         , <&gpio1 13 GPIO_ACTIVE_LOW>
         ;
 };
+
 &default_transform {
-    col-offset = <0>;
+    col-offset = <0>;  /* <--- CHANGED FROM 6 TO 0 */
 };
