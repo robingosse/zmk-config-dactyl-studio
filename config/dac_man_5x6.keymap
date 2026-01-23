@@ -18,41 +18,43 @@
                 , <&macro_tap &kp LS(C) &kp AT &kp C &kp T &kp U &kp S>                   /* C @ c t u s */
                 ;
         };
+        
+        email_macro: email_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp M &kp Y &kp E &kp M &kp A &kp I &kp L &kp AT &kp G &kp M &kp A &kp I &kp L &kp DOT &kp C &kp O &kp M>
+                ;
+        };
     };
 
     keymap {
         compatible = "zmk,keymap";
 
-        /* * LAYER 0: BASE LAYER
-         * Implements your spreadsheet layout with Mod-Taps.
-         * &mt MOD KEY -> Tap for KEY, Hold for MOD.
-         */
+        /* * LAYER 0: BASE LAYER */
         default_layer {
             bindings = <
 /* LEFT HAND */
-&kp ESC      &kp N        &kp D        &kp O        &kp L        &kp KP_LPAR
+&kp ESC      &kp N        &kp D        &kp O        &kp L        &kp LPAR   /* Fixed KP_LPAR -> LPAR */
 &kp TAB      &mt LGUI R   &mt LALT S   &mt LCTRL H  &mt LSHIFT W &kp B
 &kp PSCRN    &kp Z        &kp X        &kp C        &kp V        &kp EXCL
-                          &kp LBKT       &kp RBKT
-                                                    &kp MINUS        &kp SQT
-                                                    &mo 2            &mo 1
-                                                    &kp SEMICOLON    &kp LSHIFT /* Thumb Cluster fillers if needed */
+                          &kp UP       &kp DOWN
+                                                    &kp MINUS    &kp SQT
+                                                    &mo 2        &mo 1
+                                                    &kp X        &kp X
 
 /* RIGHT HAND */
-&kp KP_RPAR     &kp J        &kp Q        &kp U        &kp BSPC     &kp BSPC /* Doubled Backspace to fill row */
-&kp RPAR     &kp T        &mt RCTRL Y  &mt RALT G   &mt RGUI F   &kp DEL
+&kp RPAR     &kp J        &kp Q        &kp U        &kp BSPC     &kp BSPC   /* Fixed KP_RPAR -> RPAR */
+&kp E        &kp T        &mt RCTRL Y  &mt RALT G   &mt RGUI F   &kp DEL
 &kp QMARK    &kp A        &kp E        &kp O        &kp M        &kp RET
-                          &K_VOL_UP     &K_VOLUME_DOWN
-&K_PLAY_PAUSE    &kp COMMA
-&kp PERIOD       &mo 1
-&mo 2            &kp LC(S)
+                          &kp C_VOL_UP &kp C_VOL_DN                         /* Fixed K_VOL -> C_VOL */
+&kp C_PP     &kp COMMA                                                      /* Fixed K_PLAY -> C_PP */
+&kp PERIOD   &mo 1
+&mo 2        &kp LC(S)
             >;
         };
 
-        /* * LAYER 1: NUMBERS & SYMBOLS
-         * Accessible by holding the "MoL1" key.
-         * Includes BOOTLOADER on the Left Thumb.
-         */
+        /* * LAYER 1: NUMBERS & SYMBOLS */
         num_layer {
             bindings = <
 /* LEFT HAND */
@@ -60,25 +62,22 @@
 &kp SEMI     &kp LPAR     &kp RPAR     &kp N4       &kp N5       &kp N6
 &kp BSLH     &kp LBKT     &kp RBKT     &kp N1       &kp N2       &kp N3
                           &kp SLASH    &kp N0
-                                                    &bootloader  &
+                                                    &bootloader  &trans
                                                     &trans       &trans
                                                     &trans       &trans
 
 /* RIGHT HAND */
 &kp N7       &kp N8       &kp N9       &kp HOME     &kp UP       &kp PG_UP
-&kp N4       &kp N5       &kp N6       &kp LEFT     &kp UP       &kp RIGHT /* Nav Cluster */
+&kp N4       &kp N5       &kp N6       &kp LEFT     &kp UP       &kp RIGHT
 &kp N1       &kp N2       &kp N3       &kp END      &kp DOWN     &kp PG_DN
                           &kp N0       &kp DOT
-&bootloader  &trans
 &trans       &trans
-&trans       &cactus_pw
+&trans       &trans
+&trans       &trans
             >;
         };
 
-        /* * LAYER 2: EXTRA / MACROS
-         * Accessible by holding the "MoL2" key.
-         * I put your Email Macro on the 'M' key position.
-         */
+        /* * LAYER 2: EXTRA / MACROS */
         extra_layer {
             bindings = <
 /* LEFT HAND */
@@ -93,7 +92,7 @@
 /* RIGHT HAND */
 &trans       &trans       &trans       &trans       &trans       &trans
 &trans       &trans       &trans       &trans       &trans       &trans
-&trans       &trans       &trans       &trans       &trans       &trans
+&trans       &email_macro &cactus_pw   &trans       &trans       &trans /* Added your macros here */
                           &trans       &trans
 &trans       &trans
 &trans       &trans
