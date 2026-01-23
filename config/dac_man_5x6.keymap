@@ -6,6 +6,7 @@
 #include <dt-bindings/zmk/outputs.h>
 
 / {
+    macros {
         /* Name: "cactus_pw" */
         cactus_pw: cactus_pw {
             compatible = "zmk,behavior-macro";
@@ -17,6 +18,7 @@
                 , <&macro_tap &kp LS(C) &kp AT &kp C &kp T &kp U &kp S>                   /* C @ c t u s */
                 ;
         };
+    };
 
     keymap {
         compatible = "zmk,keymap";
