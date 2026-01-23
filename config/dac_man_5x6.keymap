@@ -17,7 +17,6 @@
                 , <&macro_tap &kp LS(C) &kp AT &kp C &kp T &kp U &kp S>                   /* C @ c t u s */
                 ;
         };
-    };
 
     keymap {
         compatible = "zmk,keymap";
