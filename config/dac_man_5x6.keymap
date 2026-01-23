@@ -34,23 +34,13 @@
         /* * LAYER 0: BASE LAYER */
         default_layer {
             bindings = <
-/* LEFT HAND */
-&kp ESC      &kp N        &kp D        &kp O        &kp L        &kp LPAR   /* Fixed KP_LPAR -> LPAR */
-&kp TAB      &mt LGUI R   &mt LALT S   &mt LCTRL H  &mt LSHIFT W &kp B
-&kp PSCRN    &kp Z        &kp X        &kp C        &kp V        &kp EXCL
-                          &kp UP       &kp DOWN
-                                                    &kp MINUS    &kp SQT
-                                                    &mo 2        &mo 1
-                                                    &kp X        &kp X
 
-/* RIGHT HAND */
-&kp RPAR     &kp J        &kp Q        &kp U        &kp BSPC     &kp BSPC   /* Fixed KP_RPAR -> RPAR */
-&kp E        &kp T        &mt RCTRL Y  &mt RALT G   &mt RGUI F   &kp DEL
-&kp QMARK    &kp A        &kp E        &kp O        &kp M        &kp RET
-                          &kp C_VOL_UP &kp C_VOL_DN                         /* Fixed K_VOL -> C_VOL */
-&kp C_PP     &kp COMMA                                                      /* Fixed K_PLAY -> C_PP */
-&kp PERIOD   &mo 1
-&mo 2        &kp LC(S)
+&kp ESC      &kp N        &kp D         &kp O        &kp L        &kp LPAR                                &kp RPAR     &kp J        &kp Q        &kp U        &kp BSPC     &kp BSPC
+&kp TAB      &mt LGUI R   &mt LALT S    &mt LCTRL H  &mt LSHIFT W &kp B                                   &kp E        &kp T        &mt RCTRL Y  &mt RALT G   &mt RGUI F   &kp DEL
+&kp PSCRN    &kp Z        &kp X         &kp C        &kp V        &kp EXCL                                &kp QMARK    &kp A        &kp E        &kp O        &kp M        &kp RET
+                          &kp UP        &kp DOWN                                                                                    &kp C_VOL_UP &kp C_VOL_DN
+&kp X        &kp MINUS    &kp SQT       &kp X        &mo 2        &mo 1                                   &kp C_PP     &kp COMMA    &kp PERIOD   &mo 1    &mo 2        &kp LC(S)
+
             >;
         };
 
