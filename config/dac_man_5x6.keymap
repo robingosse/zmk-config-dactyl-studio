@@ -13,7 +13,7 @@
         compatible = "zmk,keymap";
 
                                            
-        default_layer {
+        default_layer { //    ===================================================================== LAYER 0 => DEFAULT ========================================================================= //
 
             bindings = <
 &kp ESC    &kp N   &kp D     &kp O              &kp L   &kp LEFT_BRACKET                      &kp RIGHT_BRACKET     &kp T      &kp J      &kp Q      &kp U          &kp BACKSPACE
@@ -22,20 +22,10 @@
                    &kp UP_ARROW  &kp DOWN_ARROW                                                                     &kp LEFT_ARROW  &kp RIGHT_ARROW
                                                 &kp SPACE   &kp N3   &kp N4         &kp RCTRL  &kp RCMD &kp N5
                                                 &kp A   &kp B   &kp C         &kp D  &kp E &kp F
-/*
-
-            bindings = <
-&kp 1    &kp B   &kp C     &kp D              &kp E   &kp 2                              &kp 8     &kp P      &kp O      &kp N      &kp M          &kp 7
-&kp 3    &kp H   &kp I     &kp J              &kp K   &kp 4                              &kp 6     &kp L      &kp K      &kp J      &kp I          &kp 5
-&kp 5  &kp N   &kp O     &kp P              &kp Q   &kp 6                                &kp 4     &kp H      &kp G      &kp F      &kp E          &kp 3
-                   &kp S  &kp T                                                                     &kp X  &kp Y
-                                                &kp 7   &kp V   &kp W         &kp 2  &kp D &kp C
-                                                &kp X   &kp Y   &kp 8         &kp B  &kp A &kp 1
-*/
             >;
         };
 
-        layer1 {
+        layer1 { //           ===================================================================== LAYER 1 => XXX ========================================================================= //
 
             bindings = <
 &kp ESC    &kp N   &kp D     &kp O              &kp L   &kp LEFT_BRACKET                      &kp RIGHT_BRACKET     &kp T      &kp J      &kp Q      &kp U          &kp BACKSPACE
@@ -47,7 +37,7 @@
             >;
         };
 
-        layer2 {
+        layer2 { //            ===================================================================== LAYER 2 => XXX ========================================================================= //
 
             bindings = <
 &kp ESC    &kp N   &kp D     &kp O              &kp L   &kp LEFT_BRACKET                      &kp RIGHT_BRACKET     &kp T      &kp J      &kp Q      &kp U          &kp BACKSPACE
@@ -59,7 +49,7 @@
             >;
         };
 
-        layer3 {
+        layer3 {  //            ===================================================================== LAYER 3 => XXX ========================================================================= //
 
             bindings = <
 &kp ESC  &kp N   &kp D     &kp O              &kp L   &kp LEFT_BRACKET                        &kp RIGHT_BRACKET     &kp T      &kp J      &kp Q      &kp U          &kp BACKSPACE
@@ -71,7 +61,7 @@
             >;
         };
 
-        layer4 {
+        layer4 {  //            ===================================================================== LAYER 4 => XXX ========================================================================= //
 
             bindings = <
 &kp ESC    &kp N   &kp D     &kp O              &kp L   &kp LEFT_BRACKET                      &kp RIGHT_BRACKET     &kp T      &kp J      &kp Q      &kp U          &kp BACKSPACE
