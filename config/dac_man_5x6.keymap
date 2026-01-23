@@ -14,7 +14,7 @@
 
                                            
         default_layer {
-/*
+
             bindings = <
 &kp ESC    &kp N   &kp D     &kp O              &kp L   &kp LEFT_BRACKET                      &kp RIGHT_BRACKET     &kp T      &kp J      &kp Q      &kp U          &kp BACKSPACE
 &kp TAB    &kp R   &kp S     &kp H              &kp W   &kp B                                 &kp E                 &kp O      &kp Y      &kp G      &kp F          &kp DEL
@@ -22,7 +22,7 @@
                    &kp UP_ARROW  &kp DOWN_ARROW                                                                     &kp LEFT_ARROW  &kp RIGHT_ARROW
                                                 &kp SPACE   &kp N3   &kp N4         &kp RCTRL  &kp RCMD &kp N5
                                                 &kp A   &kp B   &kp C         &kp D  &kp E &kp F
-*/
+/*
 
             bindings = <
 &kp 1    &kp B   &kp C     &kp D              &kp E   &kp 2                              &kp 8     &kp P      &kp O      &kp N      &kp M          &kp 7
@@ -31,7 +31,7 @@
                    &kp S  &kp T                                                                     &kp X  &kp Y
                                                 &kp 7   &kp V   &kp W         &kp 2  &kp D &kp C
                                                 &kp X   &kp Y   &kp 8         &kp B  &kp A &kp 1
-
+*/
             >;
         };
 
