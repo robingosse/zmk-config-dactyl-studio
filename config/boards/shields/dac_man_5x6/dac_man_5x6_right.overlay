@@ -7,23 +7,28 @@
     status = "okay";
     diode-direction = "col2row";
 
-    /* COLUMNS are now OUTPUTS. They do NOT need Pull-Ups. */
+    /* * COLUMNS: Reversed Order (17 -> 4) 
+     * This fixes the Left/Right Mirroring 
+     */
     col-gpios
-        = <&gpio1 4  GPIO_ACTIVE_LOW>
-        , <&gpio0 11 GPIO_ACTIVE_LOW>
-        , <&gpio1 0  GPIO_ACTIVE_LOW>
-        , <&gpio0 22 GPIO_ACTIVE_LOW>
+        = <&gpio0 17 GPIO_ACTIVE_LOW>
         , <&gpio0 20 GPIO_ACTIVE_LOW>
-        , <&gpio0 17 GPIO_ACTIVE_LOW>
+        , <&gpio0 22 GPIO_ACTIVE_LOW>
+        , <&gpio1 0  GPIO_ACTIVE_LOW>
+        , <&gpio0 11 GPIO_ACTIVE_LOW>
+        , <&gpio1 4  GPIO_ACTIVE_LOW>
         ;
 
-    /* ROWS are now INPUTS. They NEED Pull-Ups to stop the mashing. */
+    /* * ROWS: Reversed Order (13 -> 31)
+     * This fixes the "Row 0 is Row 2" vertical flip
+     * REMEMBER: Keep the PULL_UPs here!
+     */
     row-gpios
-        = <&gpio0 31 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
-        , <&gpio0 29 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
-        , <&gpio0 2  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+        = <&gpio1 13 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
         , <&gpio1 15 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
-        , <&gpio1 13 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+        , <&gpio0 2  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+        , <&gpio0 29 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+        , <&gpio0 31 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
         ;
 };
 
