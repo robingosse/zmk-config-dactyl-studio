@@ -37,7 +37,7 @@
 
 &kp ESC      &kp N        &kp D         &kp O        &kp L        &kp LPAR                                &kp RPAR     &kp T            &kp J        &kp Q        &kp U        &kp BSPC
 &kp TAB      &mt LGUI R   &mt LALT S    &mt LCTRL H  &mt LSHIFT W &kp B                                   &kp E        &mt LSHIFT O     &mt RCTRL Y  &mt RALT G   &mt RGUI F   &kp DEL
-&kp PSCRN    &kp Z        &kp X         &kp C        &kp V        &kp EXCL                                &kp QMARK    &kp A            &kp E        &kp K        &kp M        &kp RET
+&kp PSCRN    &kp Z        &kp X         &kp C        &kp V        &kp EXCL                                &kp QMARK    &kp A            &kp I        &kp K        &kp M        &kp RET
                           &kp UP        &kp DOWN                                                                                        &kp C_VOL_UP &kp C_VOL_DN
 &kp X        &kp MINUS    &kp SQT       &kp X        &mo 2        &mo 1                                   &kp C_PP     &kp COMMA        &kp PERIOD   &mo 1    &mo 2        &kp LC(S)
 
