@@ -14,8 +14,7 @@
             wait-ms = <30>;
             tap-ms = <40>;
             bindings
-                = <&macro_tap &kp LS(B) &kp N1 &kp G &kp LS(G) &kp R &kp N3 &kp N3 &kp N> /* B 1 g G r 3 3 n */
-                , <&macro_tap &kp LS(C) &kp AT &kp C &kp T &kp U &kp S>                   /* C @ c t u s */
+                = <&macro_tap &kp LS(B) &kp N1 &kp G &kp LS(G) &kp R &kp N3 &kp N3 &kp N &kp LS(C) &kp AT &kp C &kp T &kp U &kp S>   /* B 1 g G r 3 3 n C @ c t u s */
                 ;
         };
         
