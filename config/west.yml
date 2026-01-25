@@ -2,15 +2,16 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
-    - name: badjeff
-      url-base: https://github.com/badjeff
+    - name: filippor
+      url-base: https://github.com/filippor
   projects:
     - name: zmk
       remote: zmkfirmware
       revision: main
       import: app/west.yml
-    - name: zmk-input-mouse-ps2
-      remote: badjeff
-      revision: main
+    - name: zmk-ps2-driver
+      remote: filippor
+      repo-path: kb_zmk_ps2_mouse_trackpoint_driver
+      revision: fix/zephyr-4.1
   self:
     path: config
