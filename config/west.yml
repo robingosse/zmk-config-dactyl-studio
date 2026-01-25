@@ -11,7 +11,7 @@ manifest:
       import: app/west.yml
     - name: zmk-ps2-driver
       remote: infused-kim
-      repo-path: kb_zmk_ps2_mouse_trackpoint_driver  # <--- ADD THIS LINE
+      repo-path: kb_zmk_ps2_mouse_trackpoint_driver  # <--- THIS LINE IS REQUIRED
       revision: main
   self:
     path: config
