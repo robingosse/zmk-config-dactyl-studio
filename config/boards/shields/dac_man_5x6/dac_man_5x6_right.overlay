@@ -1,5 +1,4 @@
 /* dac_man_5x6_right.overlay */
-
 #include <dt-bindings/gpio/gpio.h>
 #include "dac_man_5x6.dtsi"
 
@@ -7,9 +6,7 @@
     status = "okay";
     diode-direction = "col2row";
 
-    /* * COLUMNS: Reversed Order (17 -> 4) 
-     * This fixes the Left/Right Mirroring 
-     */
+    /* COLUMNS: Reversed Order (17 -> 4) */
     col-gpios
         = <&gpio0 17 GPIO_ACTIVE_LOW>
         , <&gpio0 20 GPIO_ACTIVE_LOW>
@@ -19,14 +16,11 @@
         , <&gpio1 4  GPIO_ACTIVE_LOW>
         ;
 
-    /* * ROWS: Reversed Order (13 -> 31)
-     * This fixes the "Row 0 is Row 2" vertical flip
-     * REMEMBER: Keep the PULL_UPs here!
-     */
+    /* ROWS: Reversed Order (13 -> 31) */
     row-gpios
-        = <&gpio0 31  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+        = <&gpio0 31 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
         , <&gpio0 29 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
-        , <&gpio0 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+        , <&gpio0 2  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
         , <&gpio1 15 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
         , <&gpio1 13 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
         ;
@@ -36,34 +30,23 @@
     col-offset = <6>;
 };
 
-
-/* Define the PS/2 pins (P1.01 = Data, P1.02 = Clock) */
-&pinctrl {
-    ps2_default: ps2_default {
-        group1 {
-            ps2-data-gpios = <&gpio1 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-            ps2-clk-gpios = <&gpio1 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-        };
-    };
-};
-
 / {
-    /* Define the Trackpoint Driver */
+    /* Driver Definition: Bit-bang PS/2 on P1.01 & P1.02 */
     ps2_mouse {
         compatible = "zmk,input-mouse-ps2";
+        /* P1.01 = Data, P1.02 = Clock */
         data-gpios = <&gpio1 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         clk-gpios = <&gpio1 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         status = "okay";
     };
 
-    /* Link the driver to ZMK's Input System */
+    /* Input Listener to move the cursor */
     mmv_input_listener {
         compatible = "zmk,input-listener";
         device = <&ps2_mouse>;
-        
-        /* Trackpoints often need orientation correction.
-           Uncomment these if the mouse moves erratically:
+        /* xy-swap is very common for trackpoints. 
+           If your mouse moves Up when you press Right, uncomment this:
         */
-        /* input-processors = <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_Y_INVERT)>; */
+        /* input-processors = <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP)>; */
     };
 };
