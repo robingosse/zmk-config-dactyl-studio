@@ -38,9 +38,11 @@
         status = "okay";
     };
 
-    /* Input Listener */
+    /* Input Listener to move cursor */
     mmv_input_listener {
         compatible = "zmk,input-listener";
         device = <&ps2_mouse>;
+        /* xy-swap is common for trackpoints. Uncomment if needed: */
+        /* input-processors = <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP)>; */
     };
 };
