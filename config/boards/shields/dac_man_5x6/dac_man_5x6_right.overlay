@@ -29,18 +29,23 @@
 };
 
 / {
-    /* * BADJEFF DRIVER CONFIGURATION
-     * This driver handles the pins directly in the mouse node.
-     */
-    ps2_mouse {
-        compatible = "zmk,input-mouse-ps2";
+    /* 1. THE PS/2 BUS (Defines the Pins) */
+    ps2_io: ps2_io {
+        compatible = "zmk,gpio-ps2";
         /* P1.01 = Data, P1.02 = Clock */
         data-gpios = <&gpio1 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         clk-gpios = <&gpio1 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         status = "okay";
     };
 
-    /* Link to ZMK Input System */
+    /* 2. THE MOUSE DRIVER (Links to the Bus) */
+    ps2_mouse: ps2_mouse {
+        compatible = "zmk,input-mouse-ps2";
+        ps2-device = <&ps2_io>;
+        status = "okay";
+    };
+
+    /* 3. THE INPUT LISTENER (Moves the Cursor) */
     mmv_input_listener {
         compatible = "zmk,input-listener";
         device = <&ps2_mouse>;
