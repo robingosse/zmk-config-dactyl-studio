@@ -2,16 +2,15 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
-    - name: daskygit
-      url-base: https://github.com/daskygit
+    - name: badjeff
+      url-base: https://github.com/badjeff
   projects:
     - name: zmk
       remote: zmkfirmware
       revision: main
       import: app/west.yml
-    - name: zmk-ps2-driver
-      remote: daskygit
-      repo-path: kb_zmk_ps2_mouse_trackpoint_driver
+    - name: zmk-input-mouse-ps2  # <--- CHANGED FROM zmk-ps2-driver
+      remote: badjeff
       revision: main
   self:
     path: config
