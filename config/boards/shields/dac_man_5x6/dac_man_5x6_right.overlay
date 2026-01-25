@@ -4,9 +4,9 @@
 
 &kscan {
     status = "okay";
-    /* Keep your existing diode-direction and row/col-gpios here */
     diode-direction = "col2row";
-    
+
+    /* COLUMNS: Reversed Order (17 -> 4) */
     col-gpios
         = <&gpio0 17 GPIO_ACTIVE_LOW>
         , <&gpio0 20 GPIO_ACTIVE_LOW>
@@ -16,6 +16,7 @@
         , <&gpio1 4  GPIO_ACTIVE_LOW>
         ;
 
+    /* ROWS: Reversed Order (13 -> 31) */
     row-gpios
         = <&gpio0 31 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
         , <&gpio0 29 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
@@ -30,22 +31,26 @@
 };
 
 / {
-    /* The New PS/2 Driver Node */
-    ps2_mouse {
-        compatible = "zmk,input-mouse-ps2";
-        /* Pins: P1.01 (Data), P1.02 (Clock) */
+    /* 1. THE BUS: Defines the physical pins (P1.01 & P1.02) */
+    ps2_io: ps2_io {
+        compatible = "zmk,gpio-ps2";
         data-gpios = <&gpio1 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         clk-gpios = <&gpio1 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         status = "okay";
     };
 
-    /* Link to ZMK Input System */
+    /* 2. THE DEVICE: Links the Bus to the Mouse Driver */
+    ps2_mouse: ps2_mouse {
+        compatible = "zmk,input-mouse-ps2";
+        ps2-device = <&ps2_io>;
+        status = "okay";
+    };
+
+    /* 3. THE LISTENER: Moves the ZMK cursor */
     mmv_input_listener {
         compatible = "zmk,input-listener";
         device = <&ps2_mouse>;
-        /* If the mouse moves erratically, uncomment the line below.
-           You can combine flags: INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_Y_INVERT 
-        */
+        /* xy-swap is common for trackpoints. Uncomment if needed: */
         /* input-processors = <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP)>; */
     };
 };
