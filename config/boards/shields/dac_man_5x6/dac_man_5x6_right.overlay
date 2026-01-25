@@ -37,7 +37,7 @@
 };
 
 
-/* Define the PS/2 Trackpoint Device */
+/* Define the PS/2 pins (P1.01 = Data, P1.02 = Clock) */
 &pinctrl {
     ps2_default: ps2_default {
         group1 {
@@ -48,22 +48,22 @@
 };
 
 / {
+    /* Define the Trackpoint Driver */
     ps2_mouse {
         compatible = "zmk,input-mouse-ps2";
-        /* Map the pins: Data -> P1.01, Clock -> P1.02 */
         data-gpios = <&gpio1 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         clk-gpios = <&gpio1 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         status = "okay";
     };
 
-    /* Link the PS/2 device to ZMK's mouse input handler */
+    /* Link the driver to ZMK's Input System */
     mmv_input_listener {
         compatible = "zmk,input-listener";
         device = <&ps2_mouse>;
-        /* Adjust scaling logic here if needed. 
-           xy-swap, x-invert, and y-invert are common fixes for trackpoints 
-           depending on orientation.
+        
+        /* Trackpoints often need orientation correction.
+           Uncomment these if the mouse moves erratically:
         */
-        /* y-invert; */ 
+        /* input-processors = <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_Y_INVERT)>; */
     };
 };
