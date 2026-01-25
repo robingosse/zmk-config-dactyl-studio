@@ -5,8 +5,7 @@
 &kscan {
     status = "okay";
     diode-direction = "col2row";
-
-    /* COLUMNS */
+    /* COLUMNS: Reversed Order */
     col-gpios
         = <&gpio0 17 GPIO_ACTIVE_LOW>
         , <&gpio0 20 GPIO_ACTIVE_LOW>
@@ -15,8 +14,7 @@
         , <&gpio0 11 GPIO_ACTIVE_LOW>
         , <&gpio1 4  GPIO_ACTIVE_LOW>
         ;
-
-    /* ROWS */
+    /* ROWS: Reversed Order */
     row-gpios
         = <&gpio0 31 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
         , <&gpio0 29 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
@@ -31,16 +29,22 @@
 };
 
 / {
-    /* Driver Definition: Bit-bang PS/2 on P1.01 & P1.02 */
-    ps2_mouse {
-        compatible = "zmk,input-mouse-ps2";
-        /* P1.01 = Data, P1.02 = Clock */
+    /* 1. Define the GPIO Bit-Banging Interface */
+    ps2_gpio_driver: ps2_gpio_driver {
+        compatible = "zmk,gpio-ps2";
         data-gpios = <&gpio1 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         clk-gpios = <&gpio1 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         status = "okay";
     };
 
-    /* Input Listener to move the cursor */
+    /* 2. Define the Mouse and link it to the GPIO Interface */
+    ps2_mouse: ps2_mouse {
+        compatible = "zmk,input-mouse-ps2";
+        ps2-device = <&ps2_gpio_driver>; /* This fixes the 'required' error */
+        status = "okay";
+    };
+
+    /* 3. Link the Mouse to ZMK Studio Input */
     mmv_input_listener {
         compatible = "zmk,input-listener";
         device = <&ps2_mouse>;
