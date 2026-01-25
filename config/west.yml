@@ -9,8 +9,9 @@ manifest:
       remote: zmkfirmware
       revision: main
       import: app/west.yml
-    - name: zmk-input-mouse-ps2  # <--- CHANGED FROM zmk-ps2-driver
+    - name: zmk-input-mouse-ps2
       remote: badjeff
+      repo-path: kb_zmk_ps2_mouse_trackpoint_driver
       revision: main
   self:
     path: config
