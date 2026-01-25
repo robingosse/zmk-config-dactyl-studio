@@ -9,8 +9,9 @@ manifest:
       remote: zmkfirmware
       revision: main
       import: app/west.yml
-    - name: kb_zmk_ps2_mouse_trackpoint_driver  # <--- CHANGED THIS NAME
+    - name: zmk-ps2-driver
       remote: infused-kim
+      repo-path: kb_zmk_ps2_mouse_trackpoint_driver
       revision: main
   self:
     path: config
