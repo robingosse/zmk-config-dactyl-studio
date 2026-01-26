@@ -3,7 +3,19 @@ if SHIELD_DAC_MAN_5X6_LEFT
 config ZMK_KEYBOARD_NAME
     default "Dac-Man-5x6-L"
 
- config ZMK_SPLIT_BLE_ROLE_CENTRAL
+# Left is peripheral in a wired split.
+config ZMK_SPLIT_ROLE_CENTRAL
+    default n
+
+endif
+
+if SHIELD_DAC_MAN_5X6_RIGHT
+
+config ZMK_KEYBOARD_NAME
+    default "Dac-Man-5x6-R"
+
+# Right is central (master)
+config ZMK_SPLIT_ROLE_CENTRAL
     default y
 
 endif
