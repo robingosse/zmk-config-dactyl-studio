@@ -14,5 +14,10 @@ manifest:
       repo-path: kb_zmk_ps2_mouse_trackpoint_driver
       path: driver-rescue      # <--- CRITICAL: Downloads to a brand new folder
       revision: main
+      - name: driver-rescue
+      remote: infused-kim
+      revision: main
+      url-base: https://github.com/infused-kim
+      path: kb_zmk_ps2_mouse_trackpoint_driver
   self:
     path: config
