@@ -1,4 +1,4 @@
-/* dac_man_5x6_left.overlay */
+/* dac_man_5x6_right.overlay */
 
 #include <dt-bindings/gpio/gpio.h>
 #include <dt-bindings/pinctrl/nrf-pinctrl.h>
@@ -6,27 +6,44 @@
 
 &kscan {
     status = "okay";
-    diode-direction = "row2col";
+    diode-direction = "col2row";
 
-    col-gpios
-        = <&gpio0 17 GPIO_ACTIVE_LOW>
-        , <&gpio0 20 GPIO_ACTIVE_LOW>
-        , <&gpio0 22 GPIO_ACTIVE_LOW>
-        , <&gpio1 0  GPIO_ACTIVE_LOW>
-        , <&gpio0 11 GPIO_ACTIVE_LOW>
-        , <&gpio1 4  GPIO_ACTIVE_LOW>
-        ;
-    row-gpios
-        = <&gpio0 31 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
-        , <&gpio0 29 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
-        , <&gpio0 2  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
-        , <&gpio1 15 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
-        , <&gpio1 13 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
-        ;
+    col-gpios =
+        <&gpio0 17 GPIO_ACTIVE_LOW>,
+        <&gpio0 20 GPIO_ACTIVE_LOW>,
+        <&gpio0 22 GPIO_ACTIVE_LOW>,
+        <&gpio1 0  GPIO_ACTIVE_LOW>,
+        <&gpio1 11 GPIO_ACTIVE_LOW>,
+        <&gpio1 4  GPIO_ACTIVE_LOW>;
+
+    row-gpios =
+        <&gpio0 31 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
+        <&gpio0 29 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
+        <&gpio0 2  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
+        <&gpio1 15 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
+        <&gpio1 13 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
 };
 
 &default_transform {
-    col-offset = <0>;
+    col-offset = <6>;
+};
+
+ps2_io: ps2_io {
+    compatible = "gpio-ps2";
+    sda-gpios = <&gpio1 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+    scl-gpios = <&gpio1 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+    status = "okay";
+};
+
+ps2_mouse: ps2_mouse {
+    compatible = "zmk,input-mouse-ps2";
+    ps2-device = <&ps2_io>;
+    status = "okay";
+};
+
+mmv_input_listener: mmv_input_listener {
+    compatible = "zmk,input-listener";
+    device = <&ps2_mouse>;
 };
 
 &pinctrl {
