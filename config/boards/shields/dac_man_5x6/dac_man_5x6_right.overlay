@@ -30,8 +30,8 @@
     /* 1. PS/2 GPIO BUS */
     ps2_io: ps2_io {
         compatible = "zmk,gpio-ps2";
-        scl-gpios = <&gpio1 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-        sda-gpios = <&gpio1 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+        data-gpios = <&gpio1 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+        clk-gpios = <&gpio1 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         status = "okay";
     };
     
@@ -41,9 +41,10 @@
         ps2-device = <&ps2_io>;
         status = "okay";
     };
-};
-
-/* 3. INPUT LISTENER */
-&mmv_input_listener {
-    device = <&ps2_mouse>;
+    
+    /* 3. INPUT LISTENER */
+    mmv_input_listener: mmv_input_listener {
+        compatible = "zmk,input-listener";
+        device = <&ps2_mouse>;
+    };
 };
