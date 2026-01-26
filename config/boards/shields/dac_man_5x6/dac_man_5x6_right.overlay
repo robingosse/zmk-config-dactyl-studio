@@ -44,3 +44,8 @@ mww_input_listener: mww_input_listener {
     device = <&ps2_mouse>;
 };
 
+wired_split {
+  compatible = "zmk,wired-split";
+  device = <&SOME_UART>;
+};
+
