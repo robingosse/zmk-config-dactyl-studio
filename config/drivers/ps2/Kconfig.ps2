@@ -1,0 +1,21 @@
+# PS/2 GPIO driver configuration
+
+config PS2_GPIO
+	bool "PS/2 GPIO driver"
+	default y
+	depends on DT_HAS_ZMK_GPIO_PS2_ENABLED
+	depends on GPIO
+	help
+	  Enable PS/2 GPIO driver for bit-banging PS/2 protocol.
+
+config PS2_INIT_PRIORITY
+	int "PS/2 driver init priority"
+	default 90
+	help
+	  PS/2 driver initialization priority.
+
+config PS2_LOG_LEVEL
+	int "PS/2 driver log level"
+	default 3
+	help
+	  PS/2 driver log level (0=OFF, 1=ERR, 2=WRN, 3=INF, 4=DBG).
