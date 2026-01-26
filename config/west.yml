@@ -9,8 +9,9 @@ manifest:
       remote: zmkfirmware
       revision: main
       import: app/west.yml
-    - name: zmk-ps2-driver
+    - name: zmk-ps2-driver-clean  # <--- NEW NAME forces a fresh download
       remote: daskygit
+      repo-path: zmk-ps2-driver   # Maps to the correct repo on GitHub
       revision: main
   self:
     path: config
