@@ -1,3 +1,0 @@
-source "$(ZEPHYR_BASE)/Kconfig.zephyr"
-
-rsource "drivers/Kconfig"
