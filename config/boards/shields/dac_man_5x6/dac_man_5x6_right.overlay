@@ -29,7 +29,7 @@
 };
 
 / {
-    /* 1. THE PS/2 BUS (Required by YAML) */
+    /* 1. PS/2 GPIO BUS */
     ps2_io: ps2_io {
         compatible = "zmk,gpio-ps2";
         data-gpios = <&gpio1 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
@@ -37,17 +37,16 @@
         status = "okay";
     };
 
-    /* 2. THE MOUSE DRIVER (Links to Bus) */
+    /* 2. MOUSE DRIVER */
     ps2_mouse: ps2_mouse {
         compatible = "zmk,input-mouse-ps2";
         ps2-device = <&ps2_io>;
         status = "okay";
     };
 
-    /* 3. THE INPUT LISTENER */
+    /* 3. INPUT LISTENER */
     mmv_input_listener {
         compatible = "zmk,input-listener";
         device = <&ps2_mouse>;
-        /* input-processors = <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP)>; */
     };
 };
