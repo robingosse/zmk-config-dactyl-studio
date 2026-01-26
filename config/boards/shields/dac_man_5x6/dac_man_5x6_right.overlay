@@ -29,7 +29,6 @@
 };
 
 / {
-/ {
     /* 1. THE PS/2 BUS (Defines the Pins) */
     ps2_io: ps2_io {
         compatible = "zmk,gpio-ps2";
