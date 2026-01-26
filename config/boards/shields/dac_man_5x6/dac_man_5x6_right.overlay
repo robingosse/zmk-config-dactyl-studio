@@ -86,3 +86,7 @@
         device = <&uart1>;
     };
 };
+
+&ps2_mouse {
+    status = "disabled";
+};
