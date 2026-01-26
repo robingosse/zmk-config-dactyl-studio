@@ -2,16 +2,17 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
-    - name: daskygit
-      url-base: https://github.com/daskygit
+    - name: badjeff
+      url-base: https://github.com/badjeff
   projects:
     - name: zmk
       remote: zmkfirmware
       revision: main
       import: app/west.yml
-    - name: zmk-ps2-driver-clean  # <--- NEW NAME forces a fresh download
-      remote: daskygit
-      repo-path: zmk-ps2-driver   # Maps to the correct repo on GitHub
+    - name: trackpoint   # <--- Unique name to force fresh update
+      remote: badjeff
+      repo-path: kb_zmk_ps2_mouse_trackpoint_driver  # <--- The actual Code on GitHub
+      path: zmk-ps2-driver   # <--- Forces it into the folder Zephyr expects
       revision: main
   self:
     path: config
