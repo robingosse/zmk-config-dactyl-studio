@@ -4,8 +4,6 @@ manifest:
       url-base: https://github.com/zmkfirmware
     - name: badjeff
       url-base: https://github.com/badjeff
-    - name: infused-kim
-      url-base: https://github.com/infused-kim
 
   projects:
     - name: zmk
@@ -13,7 +11,7 @@ manifest:
       revision: main
       import: app/west.yml
     - name: trackpoint-rescue
-      remote: infused-kim
+      remote: badjeff
       repo-path: kb_zmk_ps2_mouse_trackpoint_driver
       revision: main
       path: driver-rescue
