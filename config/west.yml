@@ -9,7 +9,7 @@ manifest:
       remote: zmkfirmware
       revision: main
       import: app/west.yml
-    - name: zmk-ps2-input  # <--- NEW NAME to force fresh download
+    - name: zmk-ps2-driver
       remote: badjeff
       repo-path: kb_zmk_ps2_mouse_trackpoint_driver
       revision: main
