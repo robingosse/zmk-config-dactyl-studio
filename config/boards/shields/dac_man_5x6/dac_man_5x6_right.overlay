@@ -1,11 +1,13 @@
-/* dac_man_5x6_right.overlay */
+/* dac_man_5x6_left.overlay */
+
 #include <dt-bindings/gpio/gpio.h>
+#include <dt-bindings/pinctrl/nrf-pinctrl.h>
 #include "dac_man_5x6.dtsi"
 
 &kscan {
     status = "okay";
-    diode-direction = "col2row";
-    compatible = "zmk,gpio-ps2";
+    diode-direction = "row2col";
+
     col-gpios
         = <&gpio0 17 GPIO_ACTIVE_LOW>
         , <&gpio0 20 GPIO_ACTIVE_LOW>
@@ -24,59 +26,23 @@
 };
 
 &default_transform {
-    col-offset = <6>;
+    col-offset = <0>;
 };
-
-ps2_io: ps2_io {
-    compatible = "gpio-ps2";
-    scl-gpios = <&gpio1 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-    sda-gpios = <&gpio1 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-    status = "okay";
-};
-
-/ {
-    ps2_io: ps2_io {
-        compatible = "gpio-ps2";
-        sda-gpios = <&gpio1 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-        scl-gpios = <&gpio1 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-        status = "okay";
-    };
-
-    ps2_mouse: ps2_mouse {
-        compatible = "zmk,input-mouse-ps2";
-        ps2-device = <&ps2_io>;
-        status = "okay";
-    };
-
-    mmv_input_listener: mmv_input_listener {
-        compatible = "zmk,input-listener";
-        device = <&ps2_mouse>;
-    };
-};
-
-
-wired_split {
-  compatible = "zmk,wired-split";
-  device = <&SOME_UART>;
-};
-
-
-#include <dt-bindings/pinctrl/nrf-pinctrl.h>
 
 &pinctrl {
-    uart1_default: uart1_default {
+    dacman_uart1_default: dacman_uart1_default {
         group1 {
             psels =
                 <NRF_PSEL(UART_TX, 0, 8)>,
-                <NRF_PSEL(UART_RX, 0, 6)>;  /* <-- CHANGE 6 to your RX pin */
+                <NRF_PSEL(UART_RX, 0, 6)>;
         };
     };
 
-    uart1_sleep: uart1_sleep {
+    dacman_uart1_sleep: dacman_uart1_sleep {
         group1 {
             psels =
                 <NRF_PSEL(UART_TX, 0, 8)>,
-                <NRF_PSEL(UART_RX, 0, 6)>;  /* <-- CHANGE 6 to your RX pin */
+                <NRF_PSEL(UART_RX, 0, 6)>;
             low-power-enable;
         };
     };
@@ -85,9 +51,14 @@ wired_split {
 &uart1 {
     status = "okay";
     current-speed = <115200>;
-    pinctrl-0 = <&uart1_default>;
-    pinctrl-1 = <&uart1_sleep>;
+    pinctrl-0 = <&dacman_uart1_default>;
+    pinctrl-1 = <&dacman_uart1_sleep>;
     pinctrl-names = "default", "sleep";
 };
 
-
+ / {
+    wired_split {
+        compatible = "zmk,wired-split";
+        device = <&uart1>;
+    };
+};
