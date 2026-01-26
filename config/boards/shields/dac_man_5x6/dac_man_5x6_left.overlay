@@ -29,3 +29,8 @@
 &default_transform {
     col-offset = <0>;  /* <--- CHANGED FROM 6 TO 0 */
 };
+
+wired_split {
+  compatible = "zmk,wired-split";
+  device = <&SOME_UART>;
+};
