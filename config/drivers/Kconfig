@@ -1,3 +1,5 @@
-source "$(ZEPHYR_BASE)/Kconfig.zephyr"
+menu "Custom Drivers"
 
-rsource "drivers/Kconfig"
+rsource "ps2/Kconfig.ps2"
+
+endmenu
