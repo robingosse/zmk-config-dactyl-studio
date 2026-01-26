@@ -9,10 +9,10 @@ manifest:
       remote: zmkfirmware
       revision: main
       import: app/west.yml
-    - name: trackpoint   # <--- Unique name to force fresh update
+    - name: trackpoint-rescue  # Unique name
       remote: badjeff
-      repo-path: kb_zmk_ps2_mouse_trackpoint_driver  # <--- The actual Code on GitHub
-      path: zmk-ps2-driver   # <--- Forces it into the folder Zephyr expects
+      repo-path: kb_zmk_ps2_mouse_trackpoint_driver
+      path: driver-rescue      # <--- CRITICAL: Downloads to a brand new folder
       revision: main
   self:
     path: config
