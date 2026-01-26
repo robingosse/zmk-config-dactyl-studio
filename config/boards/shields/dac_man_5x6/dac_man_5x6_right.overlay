@@ -4,6 +4,7 @@
 #include <dt-bindings/pinctrl/nrf-pinctrl.h>
 #include "dac_man_5x6.dtsi"
 
+/* ---------- Key scan ---------- */
 &kscan {
     status = "okay";
     diode-direction = "col2row";
@@ -28,24 +29,7 @@
     col-offset = <6>;
 };
 
-ps2_io: ps2_io {
-    compatible = "gpio-ps2";
-    sda-gpios = <&gpio1 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-    scl-gpios = <&gpio1 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-    status = "okay";
-};
-
-ps2_mouse: ps2_mouse {
-    compatible = "zmk,input-mouse-ps2";
-    ps2-device = <&ps2_io>;
-    status = "okay";
-};
-
-mmv_input_listener: mmv_input_listener {
-    compatible = "zmk,input-listener";
-    device = <&ps2_mouse>;
-};
-
+/* ---------- UART pin control ---------- */
 &pinctrl {
     dacman_uart1_default: dacman_uart1_default {
         group1 {
@@ -73,7 +57,30 @@ mmv_input_listener: mmv_input_listener {
     pinctrl-names = "default", "sleep";
 };
 
+/* ---------- Top-level devices ---------- */
  / {
+    /* TrackPoint PS/2 bus */
+    ps2_io: ps2_io {
+        compatible = "gpio-ps2";
+        sda-gpios = <&gpio1 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+        scl-gpios = <&gpio1 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+        status = "okay";
+    };
+
+    /* TrackPoint mouse */
+    ps2_mouse: ps2_mouse {
+        compatible = "zmk,input-mouse-ps2";
+        ps2-device = <&ps2_io>;
+        status = "okay";
+    };
+
+    /* Mouse input listener */
+    mmv_input_listener: mmv_input_listener {
+        compatible = "zmk,input-listener";
+        device = <&ps2_mouse>;
+    };
+
+    /* Wired split transport */
     wired_split {
         compatible = "zmk,wired-split";
         device = <&uart1>;
