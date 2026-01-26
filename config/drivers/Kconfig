@@ -1,1 +1,5 @@
+menu "Custom Drivers"
+
 rsource "ps2/Kconfig.ps2"
+
+endmenu
