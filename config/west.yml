@@ -9,9 +9,10 @@ manifest:
       remote: zmkfirmware
       revision: main
       import: app/west.yml
-    - name: zmk-ps2-driver
+    - name: zmk-ps2-rescue        # Unique name to force fresh setup
       remote: badjeff
-      repo-path: kb_zmk_ps2_mouse_trackpoint_driver
+      repo-path: kb_zmk_ps2_mouse_trackpoint_driver  # <--- CORRECT REPO NAME
+      path: drivers/ps2-rescue    # <--- Downloads to this new clean folder
       revision: main
   self:
     path: config
