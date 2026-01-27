@@ -4,17 +4,15 @@ manifest:
       url-base: https://github.com/zmkfirmware
     - name: badjeff
       url-base: https://github.com/badjeff
-
   projects:
     - name: zmk
       remote: zmkfirmware
       revision: main
       import: app/west.yml
-    - name: trackpoint-rescue
+    - name: trackpoint-rescue  # <--- Unique Project Name
       remote: badjeff
       repo-path: kb_zmk_ps2_mouse_trackpoint_driver
+      path: driver-rescue      # <--- CRITICAL: Downloads to a brand new folder
       revision: main
-      path: driver-rescue
-
   self:
     path: config
