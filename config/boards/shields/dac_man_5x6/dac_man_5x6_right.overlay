@@ -1,92 +1,52 @@
 /* dac_man_5x6_right.overlay */
-
 #include <dt-bindings/gpio/gpio.h>
-#include <dt-bindings/pinctrl/nrf-pinctrl.h>
 #include "dac_man_5x6.dtsi"
 
-/* ---------- Key scan ---------- */
 &kscan {
     status = "okay";
     diode-direction = "col2row";
 
-    col-gpios =
-        <&gpio0 17 GPIO_ACTIVE_LOW>,
-        <&gpio0 20 GPIO_ACTIVE_LOW>,
-        <&gpio0 22 GPIO_ACTIVE_LOW>,
-        <&gpio1 0  GPIO_ACTIVE_LOW>,
-        <&gpio1 11 GPIO_ACTIVE_LOW>,
-        <&gpio1 4  GPIO_ACTIVE_LOW>;
+    col-gpios
+        = <&gpio0 17 GPIO_ACTIVE_LOW>
+        , <&gpio0 20 GPIO_ACTIVE_LOW>
+        , <&gpio0 22 GPIO_ACTIVE_LOW>
+        , <&gpio1 0  GPIO_ACTIVE_LOW>
+        , <&gpio0 11 GPIO_ACTIVE_LOW>
+        , <&gpio1 4  GPIO_ACTIVE_LOW>
+        ;
 
-    row-gpios =
-        <&gpio0 31 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
-        <&gpio0 29 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
-        <&gpio0 2  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
-        <&gpio1 15 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
-        <&gpio1 13 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+    row-gpios
+        = <&gpio0 31 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+        , <&gpio0 29 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+        , <&gpio0 2  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+        , <&gpio1 15 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+        , <&gpio1 13 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+        ;
 };
 
 &default_transform {
     col-offset = <6>;
 };
 
-/* ---------- UART pin control ---------- */
-&pinctrl {
-    dacman_uart1_default: dacman_uart1_default {
-        group1 {
-            psels =
-                <NRF_PSEL(UART_TX, 0, 8)>,
-                <NRF_PSEL(UART_RX, 0, 6)>;
-        };
-    };
-
-    dacman_uart1_sleep: dacman_uart1_sleep {
-        group1 {
-            psels =
-                <NRF_PSEL(UART_TX, 0, 8)>,
-                <NRF_PSEL(UART_RX, 0, 6)>;
-            low-power-enable;
-        };
-    };
-};
-
-&uart1 {
-    status = "okay";
-    current-speed = <115200>;
-    pinctrl-0 = <&dacman_uart1_default>;
-    pinctrl-1 = <&dacman_uart1_sleep>;
-    pinctrl-names = "default", "sleep";
-};
-
-/* ---------- Top-level devices ---------- */
- / {
-    /* TrackPoint PS/2 bus */
+/ {
+    /* 1. PS/2 GPIO BUS */
     ps2_io: ps2_io {
-        compatible = "gpio-ps2";
-        sda-gpios = <&gpio1 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-        scl-gpios = <&gpio1 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+        compatible = "zmk,gpio-ps2";
+        data-gpios = <&gpio1 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+        clk-gpios = <&gpio1 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         status = "okay";
     };
 
-    /* TrackPoint mouse */
+    /* 2. MOUSE DRIVER */
     ps2_mouse: ps2_mouse {
         compatible = "zmk,input-mouse-ps2";
         ps2-device = <&ps2_io>;
         status = "okay";
     };
 
-    /* Mouse input listener */
-    mmv_input_listener: mmv_input_listener {
+    /* 3. INPUT LISTENER */
+    mmv_input_listener {
         compatible = "zmk,input-listener";
         device = <&ps2_mouse>;
     };
-
-    /* Wired split transport */
-    wired_split {
-        compatible = "zmk,wired-split";
-        device = <&uart1>;
-    };
-};
-
-&ps2_mouse {
-    status = "disabled";
 };
