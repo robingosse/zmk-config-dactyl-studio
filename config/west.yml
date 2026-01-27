@@ -7,9 +7,9 @@ manifest:
       remote: zmkfirmware
       revision: main
       import: app/west.yml
-    - name: zmk-ps2-driver
+    - name: trackpoint-dasky-v1                # <--- NEW Unique Name
       url: https://github.com/daskygit/zmk-ps2-driver
-      path: modules/ps2         # <--- Standardizing the path
+      path: modules/trackpoint-dasky           # <--- NEW Clean Folder
       revision: main
   self:
     path: config
