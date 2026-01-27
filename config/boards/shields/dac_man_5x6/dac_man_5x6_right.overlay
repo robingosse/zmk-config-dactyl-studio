@@ -27,26 +27,3 @@
 &default_transform {
     col-offset = <6>;
 };
-
-/ {
-    /* 1. PS/2 GPIO BUS */
-    ps2_io: ps2_io {
-        compatible = "zmk,gpio-ps2";
-        data-gpios = <&gpio1 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-        clk-gpios = <&gpio1 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-        status = "okay";
-    };
-
-    /* 2. MOUSE DRIVER */
-    ps2_mouse: ps2_mouse {
-        compatible = "zmk,input-mouse-ps2";
-        ps2-device = <&ps2_io>;
-        status = "okay";
-    };
-
-    /* 3. INPUT LISTENER */
-    mmv_input_listener {
-        compatible = "zmk,input-listener";
-        device = <&ps2_mouse>;
-    };
-};
