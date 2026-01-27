@@ -2,17 +2,14 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
-    - name: badjeff
-      url-base: https://github.com/badjeff
   projects:
     - name: zmk
       remote: zmkfirmware
       revision: main
       import: app/west.yml
-    - name: zmk-ps2-rescue        # Unique name to force fresh setup
-      remote: badjeff
-      repo-path: kb_zmk_ps2_mouse_trackpoint_driver  # <--- CORRECT REPO NAME
-      path: drivers/ps2-rescue    # <--- Downloads to this new clean folder
+    - name: zmk-ps2-driver-clean  # Unique Name
+      url: https://github.com/daskygit/zmk-ps2-driver  # DIRECT URL (No Remote needed)
+      path: modules/ps2-dasky     # Clean Folder
       revision: main
   self:
     path: config
