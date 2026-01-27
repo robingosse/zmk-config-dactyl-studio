@@ -56,8 +56,8 @@
 &pinctrl {
     gpio_ps2_default: gpio_ps2_default {
         group1 {
-            psels = <NRF_PSEL(GPIO, 1, 1)>,  // P1.01 - data
-                    <NRF_PSEL(GPIO, 1, 2)>;  // P1.02 - clock
+            psels = {<NRF_PSEL(GPIO, 1, 1)>;  // P1.01 - data
+                    <NRF_PSEL(GPIO, 1, 2)>;}  // P1.02 - clock
         };
     };
 };
