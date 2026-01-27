@@ -9,9 +9,10 @@ manifest:
       remote: zmkfirmware
       revision: main
       import: app/west.yml
-    - name: zmk-ps2-driver
+    - name: zmk-ps2-driver        # <--- MUST BE "zmk-ps2-driver"
       remote: badjeff
       repo-path: kb_zmk_ps2_mouse_trackpoint_driver
+      path: modules/ps2-working   # <--- Downloads to a fresh, clean folder
       revision: main
   self:
     path: config
