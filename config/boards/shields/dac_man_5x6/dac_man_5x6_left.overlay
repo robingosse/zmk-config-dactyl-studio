@@ -60,15 +60,4 @@
         compatible = "zmk,wired-split";
         device = <&uart1>;
     };
-
-    mouse_ps2: mouse_ps2 {
-        compatible = "zmk,gpio-ps2";
-        status = "okay";
-        scl-gpios = <&gpio0 8 GPIO_ACTIVE_HIGH>;
-        sda-gpios = <&gpio0 6 GPIO_ACTIVE_HIGH>;
-    };
-};
-
-&mouse_ps2_input_listener {
-    status = "okay";
 };
