@@ -5,7 +5,7 @@ manifest:
   projects:
     - name: zmk
       remote: zmkfirmware
-      revision: v3.5-branch
+      revision: v3-branch
       import: app/west.yml
     - name: ps2-driver-kim
       url: https://github.com/infused-kim/kb_zmk_ps2_mouse_trackpoint_driver
