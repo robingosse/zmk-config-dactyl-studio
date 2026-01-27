@@ -7,9 +7,9 @@ manifest:
       remote: zmkfirmware
       revision: main
       import: app/west.yml
-    - name: zmk-ps2-driver           # Keep standard name for build system
+    - name: ps2-driver-kemo             # <--- UNIQUE NAME (Bypasses Update Error)
       url: https://github.com/kemonine/zmk-ps2-driver
-      path: modules/ps2-kemo         # New clean folder
+      path: modules/ps2-kemo            # <--- UNIQUE FOLDER
       revision: main
   self:
     path: config
