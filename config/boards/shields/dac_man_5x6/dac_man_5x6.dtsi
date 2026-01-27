@@ -5,15 +5,6 @@
 #include <physical_layouts.dtsi>
 
 / {
-    mouse_ps2_input_listener: mouse_ps2_input_listener {
-        compatible = "zmk,input-listener-ps2";
-        status = "disabled";
-
-        device = <&mouse_ps2>;
-    };
-};
-
-/ {
     kscan: kscan {
         compatible = "zmk,kscan-gpio-matrix";
         status = "disabled";          /* overlays will enable per-half */
