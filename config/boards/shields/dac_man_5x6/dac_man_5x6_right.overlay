@@ -37,16 +37,36 @@
         status = "okay";
     };
 
-    /* MOUSE DRIVER */
-    ps2_mouse: ps2_mouse {
-        compatible = "zmk,input-mouse-ps2";
-        ps2-device = <&ps2_io>;
-        status = "okay";
-    };
-
     /* INPUT LISTENER */
     mmv_input_listener {
         compatible = "zmk,input-listener";
         device = <&ps2_mouse>;
+    };
+};
+
+/ {
+    mouse_ps2: mouse_ps2 {
+        compatible = "zmk,input-mouse-ps2";
+        status = "okay";
+        ps2-device = <&gpio_ps2>;
+        // Trackpoint on P1.01 (data) and P1.02 (clock)
+    };
+};
+
+&pinctrl {
+    gpio_ps2_default: gpio_ps2_default {
+        group1 {
+            psels = <NRF_PSEL(GPIO, 1, 1)>,  // P1.01 - data
+                    <NRF_PSEL(GPIO, 1, 2)>;  // P1.02 - clock
+        };
+    };
+};
+
+&gpio1 {
+    gpio_ps2: gpio_ps2 {
+        compatible = "gpio-ps2";
+        status = "okay";
+        scl-gpios = <&gpio1 2 GPIO_ACTIVE_HIGH>;  // P1.02 clock
+        sda-gpios = <&gpio1 1 GPIO_ACTIVE_HIGH>;  // P1.01 data
     };
 };
