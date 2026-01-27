@@ -2,17 +2,14 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
-    - name: daskygit
-      url-base: https://github.com/daskygit
   projects:
     - name: zmk
       remote: zmkfirmware
       revision: main
       import: app/west.yml
-    - name: zmk-ps2-dasky-final   # <--- New unique name
-      remote: daskygit
-      repo-path: zmk-ps2-driver   # <--- Correct Repo Name on GitHub
-      path: drivers/dasky-final   # <--- New clean folder
+    - name: zmk-ps2-driver
+      url: https://github.com/daskygit/zmk-ps2-driver
+      path: modules/ps2         # <--- Standardizing the path
       revision: main
   self:
     path: config
