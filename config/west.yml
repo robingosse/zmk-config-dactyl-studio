@@ -2,17 +2,14 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
-    - name: badjeff
-      url-base: https://github.com/badjeff
   projects:
     - name: zmk
       remote: zmkfirmware
       revision: main
       import: app/west.yml
-    - name: zmk-ps2-driver
-      remote: badjeff
-      repo-path: kb_zmk_ps2_mouse_trackpoint_driver
-      path: modules/ps2-working
+    - name: zmk-ps2-driver           # Keep standard name for build system
+      url: https://github.com/kemonine/zmk-ps2-driver
+      path: modules/ps2-kemo         # New clean folder
       revision: main
   self:
     path: config
