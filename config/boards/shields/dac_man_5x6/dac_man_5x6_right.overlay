@@ -44,7 +44,6 @@
         compatible = "zmk,input-listener";
         device = <&ps2_mouse>;
     };
-/ {
     gpio_ps2: gpio_ps2 {
         compatible = "gpio-ps2";
         status = "okay";
@@ -79,5 +78,4 @@
             label = "Debug Blue LED";
         };
     };
-};
 };
