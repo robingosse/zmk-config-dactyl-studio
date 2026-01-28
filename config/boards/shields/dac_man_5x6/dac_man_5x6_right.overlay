@@ -20,16 +20,17 @@
         ;
 };
 
-/ {
+    / {
     chosen {
-        /* Trick ZMK into thinking the Red LED is the backlight */
-        zmk,backlight = &diag_red;
+        /* POINT THIS AT THE BLUE LED (P1.11) - IT IS SAFER */
+        zmk,backlight = &diag_blue;
     };
 
-    /* Keep your existing LED definitions */
     leds {
         compatible = "gpio-leds";
         status = "okay";
+        
+        /* Red/Green are on dangerous NFC pins - ignore them for a moment */
         diag_red: led_ext_r {
             gpios = <&gpio0 9 GPIO_ACTIVE_LOW>;
             label = "External Red";
@@ -38,11 +39,14 @@
             gpios = <&gpio0 10 GPIO_ACTIVE_LOW>;
             label = "External Green";
         };
+        
+        /* Blue is on P1.11 - The Safe Pin */
         diag_blue: led_ext_b {
             gpios = <&gpio1 11 GPIO_ACTIVE_LOW>;
             label = "External Blue";
         };
     };
+};
     
     /* ... keep the rest of your overlay ... */
 };
