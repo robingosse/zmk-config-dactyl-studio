@@ -29,7 +29,7 @@
 / {
     /* PS/2 GPIO Device */
     gpio_ps2: gpio_ps2 {
-        compatible = "zmk,gpio-ps2";
+        compatible = "gpio-ps2";  // Try without the zmk, prefix
         status = "okay";
         data-gpios = <&gpio1 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         clk-gpios = <&gpio1 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
