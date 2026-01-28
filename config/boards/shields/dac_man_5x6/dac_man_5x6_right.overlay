@@ -44,23 +44,6 @@
         compatible = "zmk,input-listener";
         device = <&ps2_mouse>;
     };
-    gpio_ps2: gpio_ps2 {
-        compatible = "gpio-ps2";
-        status = "okay";
-        scl-gpios = <&gpio1 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-        sda-gpios = <&gpio1 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-    };
-
-    ps2_mouse: ps2_mouse {
-        compatible = "zmk,input-mouse-ps2";
-        status = "okay";
-        ps2-device = <&gpio_ps2>;
-    };
-
-    mmv_input_listener {
-        compatible = "zmk,input-listener";
-        device = <&ps2_mouse>;
-    };
 
     /* Debug RGB LED */
     debug_leds {
