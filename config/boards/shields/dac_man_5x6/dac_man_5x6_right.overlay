@@ -1,10 +1,8 @@
-/* dac_man_5x6_right.overlay */
 #include <dt-bindings/gpio/gpio.h>
 #include "dac_man_5x6.dtsi"
 
 &kscan {
     status = "okay";
-    diode-direction = "col2row";
     col-gpios
         = <&gpio0 17 GPIO_ACTIVE_LOW>
         , <&gpio0 20 GPIO_ACTIVE_LOW>
@@ -27,11 +25,12 @@
 };
 
 / {
+    /* PS/2 Settings */
     gpio_ps2: gpio_ps2 {
         compatible = "gpio-ps2";
         status = "okay";
-        scl-gpios = <&gpio1 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;  // Clock on P1.02
-        sda-gpios = <&gpio1 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;  // Data on P1.01
+        scl-gpios = <&gpio1 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+        sda-gpios = <&gpio1 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
     };
 
     ps2_mouse: ps2_mouse {
@@ -45,47 +44,20 @@
         device = <&ps2_mouse>;
     };
 
-debug_leds {
-    compatible = "gpio-leds";
-    debug_led_r: led_r {
-        gpios = <&gpio0 9 (GPIO_ACTIVE_HIGH)>;
-        label = "Debug Red LED";
-    };
-    debug_led_g: led_g {
-        gpios = <&gpio0 10 (GPIO_ACTIVE_HIGH)>;
-        label = "Debug Green LED";
-    };
-    debug_led_b: led_b {
-        gpios = <&gpio1 11 (GPIO_ACTIVE_HIGH)>;
-        label = "Debug Blue LED";
-    };
-    };
-};
-
-
-
-/ {
+    /* LED Settings - Corrected for Common Anode */
     leds {
         compatible = "gpio-leds";
         status = "okay";
-        red_led: led_0 {
-            gpios = <&gpio0 09 (GPIO_ACTIVE_HIGH)>;
+        red_led: led_red {
+            gpios = <&gpio0 9 GPIO_ACTIVE_LOW>;
             label = "Red LED";
         };
-    };
-    leds {
-        compatible = "gpio-leds";
-        status = "okay";
-        green_led: led_0 {
-            gpios = <&gpio0 10 (GPIO_ACTIVE_HIGH)>;
+        green_led: led_green {
+            gpios = <&gpio0 10 GPIO_ACTIVE_LOW>;
             label = "Green LED";
         };
-    };
-    leds {
-        compatible = "gpio-leds";
-        status = "okay";
-        blue_led: led_0 {
-            gpios = <&gpio1 11 (GPIO_ACTIVE_HIGH)>;
+        blue_led: led_blue {
+            gpios = <&gpio1 11 GPIO_ACTIVE_LOW>;
             label = "Blue LED";
         };
     };
