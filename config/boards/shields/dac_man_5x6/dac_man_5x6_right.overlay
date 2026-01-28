@@ -5,7 +5,6 @@
 &kscan {
     status = "okay";
     diode-direction = "col2row";
-
     col-gpios
         = <&gpio0 17 GPIO_ACTIVE_LOW>
         , <&gpio0 20 GPIO_ACTIVE_LOW>
@@ -14,7 +13,6 @@
         , <&gpio0 11 GPIO_ACTIVE_LOW>
         , <&gpio1 4  GPIO_ACTIVE_LOW>
         ;
-
     row-gpios
         = <&gpio0 31 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
         , <&gpio0 29 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
@@ -29,44 +27,24 @@
 };
 
 / {
-    /* PS/2 GPIO BUS */
-    ps2_io: ps2_io {
+    /* PS/2 GPIO Device */
+    gpio_ps2: gpio_ps2 {
         compatible = "zmk,gpio-ps2";
+        status = "okay";
         data-gpios = <&gpio1 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         clk-gpios = <&gpio1 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-        status = "okay";
     };
 
-    /* INPUT LISTENER */
-    mmv_input_listener {
-        compatible = "zmk,input-listener";
-        device = <&ps2_mouse>;
-    };
-};
-
-/ {
-    mouse_ps2: mouse_ps2 {
+    /* PS/2 Mouse Input Device */
+    ps2_mouse: ps2_mouse {
         compatible = "zmk,input-mouse-ps2";
         status = "okay";
         ps2-device = <&gpio_ps2>;
-        // Trackpoint on P1.01 (data) and P1.02 (clock)
     };
-};
 
-&pinctrl {
-    gpio_ps2_default: gpio_ps2_default {
-        group1 {
-            psels = <NRF_PSEL(GPIO, 1, 1)>,  // P1.01 - data
-                    <NRF_PSEL(GPIO, 1, 2)>;  // P1.02 - clock
-        };
-    };
-};
-
-&gpio1 {
-    gpio_ps2: gpio_ps2 {
-        compatible = "gpio-ps2";
-        status = "okay";
-        scl-gpios = <&gpio1 2 GPIO_ACTIVE_HIGH>;  // P1.02 clock
-        sda-gpios = <&gpio1 1 GPIO_ACTIVE_HIGH>;  // P1.01 data
+    /* Input Listener for Mouse Movement */
+    mmv_input_listener {
+        compatible = "zmk,input-listener";
+        device = <&ps2_mouse>;
     };
 };
