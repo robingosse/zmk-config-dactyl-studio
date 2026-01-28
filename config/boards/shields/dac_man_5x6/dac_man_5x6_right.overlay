@@ -1,6 +1,7 @@
 #include <dt-bindings/gpio/gpio.h>
 #include "dac_man_5x6.dtsi"
 
+/* KSCAN Settings - Matrix Pins */
 &kscan {
     status = "okay";
     col-gpios
@@ -20,43 +21,20 @@
         ;
 };
 
-    / {
-    chosen {
-        /* POINT THIS AT THE BLUE LED (P1.11) - IT IS SAFER */
-        zmk,backlight = &diag_blue;
-    };
-
-    leds {
-        compatible = "gpio-leds";
-        status = "okay";
-        
-        /* Red/Green are on dangerous NFC pins - ignore them for a moment */
-        diag_red: led_ext_r {
-            gpios = <&gpio0 9 GPIO_ACTIVE_LOW>;
-            label = "External Red";
-        };
-        diag_green: led_ext_g {
-            gpios = <&gpio0 10 GPIO_ACTIVE_LOW>;
-            label = "External Green";
-        };
-        
-        /* Blue is on P1.11 - The Safe Pin */
-        diag_blue: led_ext_b {
-            gpios = <&gpio1 11 GPIO_ACTIVE_LOW>;
-            label = "External Blue";
-        };
-    };
-};
-    
-    /* ... keep the rest of your overlay ... */
-};
-
+/* Matrix Transform */
 &default_transform {
     col-offset = <6>;
 };
 
+/* Root Node - Everything else lives here */
 / {
-    /* PS/2 Settings */
+    chosen {
+        /* "Backlight" Hack: We map this to the BLUE LED (P1.11) for testing.
+           P1.11 is safer than Red/Green because it doesn't need the NFC unlock. */
+        zmk,backlight = &diag_blue;
+    };
+
+    /* PS/2 Driver Settings */
     gpio_ps2: gpio_ps2 {
         compatible = "gpio-ps2";
         status = "okay";
@@ -75,7 +53,7 @@
         device = <&ps2_mouse>;
     };
 
-/* LED Settings - Renamed to avoid conflicts with nice!nano onboard LEDs */
+    /* LED Settings */
     leds {
         compatible = "gpio-leds";
         status = "okay";
@@ -90,7 +68,6 @@
             label = "External Green";
         };
         
-        /* Renamed from 'blue_led' to 'diag_blue' to fix the crash */
         diag_blue: led_ext_b {
             gpios = <&gpio1 11 GPIO_ACTIVE_LOW>;
             label = "External Blue";
