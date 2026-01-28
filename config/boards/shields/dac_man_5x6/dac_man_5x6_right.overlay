@@ -61,3 +61,16 @@ debug_leds {
     };
 };
 };
+
+/ {
+    leds {
+        compatible = "gpio-leds";
+        blue_led: led_0 {
+            gpios = <&gpio1 11 GPIO_ACTIVE_LOW>;
+        };
+    };
+};
+
+&led_strip {
+    chain-length = <1>;
+};
