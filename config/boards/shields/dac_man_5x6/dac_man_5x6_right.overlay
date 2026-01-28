@@ -51,3 +51,10 @@
         };
     };
 };
+
+/ {
+    test {
+        compatible = "zmk,gpio-key-wakeup-trigger";
+        trigger = <&gpio0 9 GPIO_ACTIVE_LOW>;
+    };
+};
