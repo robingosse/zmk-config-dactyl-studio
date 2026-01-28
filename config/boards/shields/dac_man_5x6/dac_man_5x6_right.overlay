@@ -25,48 +25,30 @@
 };
 
 / {
-    /* WE REMOVED THE BACKLIGHT CHOSEN NODE */
-    /* We are relying on the default state "Off" to turn the light ON */
-
-    /* PS/2 Mouse Settings */
-    gpio_ps2: gpio_ps2 {
-        compatible = "gpio-ps2";
-        status = "okay";
-        scl-gpios = <&gpio1 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-        sda-gpios = <&gpio1 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+    chosen {
+        /* MAP BACKLIGHT TO RED LED (Pin 0.09) */
+        zmk,backlight = &led_red;
     };
 
-    ps2_mouse: ps2_mouse {
-        compatible = "zmk,input-mouse-ps2";
-        status = "okay";
-        ps2-device = <&gpio_ps2>;
-    };
-
-    mmv_input_listener {
-        compatible = "zmk,input-listener";
-        device = <&ps2_mouse>;
-    };
-
-    /* LED Settings */
     leds {
         compatible = "gpio-leds";
         status = "okay";
         
-        /* THE HACK: logic is flipped to GPIO_ACTIVE_HIGH. 
-           ZMK sets it "Off" (Low) -> Light turns ON. */
-        diag_blue: led_ext_b {
-            gpios = <&gpio1 11 GPIO_ACTIVE_HIGH>;
-            label = "External Blue";
-        };
-        
-        diag_red: led_ext_r {
-            gpios = <&gpio0 9 GPIO_ACTIVE_HIGH>;
+        /* RED (P0.09) - Active Low (Ground to turn on) */
+        led_red: led_ext_r {
+            gpios = <&gpio0 9 GPIO_ACTIVE_LOW>;
             label = "External Red";
         };
-        
-        diag_green: led_ext_g {
-            gpios = <&gpio0 10 GPIO_ACTIVE_HIGH>;
+
+        /* We define these so the compiler doesn't complain, 
+           but only RED will light up automatically right now. */
+        led_green: led_ext_g {
+            gpios = <&gpio0 10 GPIO_ACTIVE_LOW>;
             label = "External Green";
+        };
+        led_blue: led_ext_b {
+            gpios = <&gpio1 11 GPIO_ACTIVE_LOW>;
+            label = "External Blue";
         };
     };
 };
