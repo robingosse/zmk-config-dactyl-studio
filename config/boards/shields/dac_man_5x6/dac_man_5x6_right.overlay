@@ -20,6 +20,33 @@
         ;
 };
 
+/ {
+    chosen {
+        /* Trick ZMK into thinking the Red LED is the backlight */
+        zmk,backlight = &diag_red;
+    };
+
+    /* Keep your existing LED definitions */
+    leds {
+        compatible = "gpio-leds";
+        status = "okay";
+        diag_red: led_ext_r {
+            gpios = <&gpio0 9 GPIO_ACTIVE_LOW>;
+            label = "External Red";
+        };
+        diag_green: led_ext_g {
+            gpios = <&gpio0 10 GPIO_ACTIVE_LOW>;
+            label = "External Green";
+        };
+        diag_blue: led_ext_b {
+            gpios = <&gpio1 11 GPIO_ACTIVE_LOW>;
+            label = "External Blue";
+        };
+    };
+    
+    /* ... keep the rest of your overlay ... */
+};
+
 &default_transform {
     col-offset = <6>;
 };
