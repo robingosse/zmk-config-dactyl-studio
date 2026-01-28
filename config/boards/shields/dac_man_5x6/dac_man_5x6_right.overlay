@@ -25,11 +25,8 @@
 };
 
 / {
-    chosen {
-        /* We map the Backlight to the BLUE LED (P1.11).
-           This forces ZMK to turn it on at boot. */
-        zmk,backlight = &diag_blue;
-    };
+    /* WE REMOVED THE BACKLIGHT CHOSEN NODE */
+    /* We are relying on the default state "Off" to turn the light ON */
 
     /* PS/2 Mouse Settings */
     gpio_ps2: gpio_ps2 {
@@ -55,19 +52,21 @@
         compatible = "gpio-leds";
         status = "okay";
         
+        /* THE HACK: logic is flipped to GPIO_ACTIVE_HIGH. 
+           ZMK sets it "Off" (Low) -> Light turns ON. */
+        diag_blue: led_ext_b {
+            gpios = <&gpio1 11 GPIO_ACTIVE_HIGH>;
+            label = "External Blue";
+        };
+        
         diag_red: led_ext_r {
-            gpios = <&gpio0 9 GPIO_ACTIVE_LOW>;
+            gpios = <&gpio0 9 GPIO_ACTIVE_HIGH>;
             label = "External Red";
         };
         
         diag_green: led_ext_g {
-            gpios = <&gpio0 10 GPIO_ACTIVE_LOW>;
+            gpios = <&gpio0 10 GPIO_ACTIVE_HIGH>;
             label = "External Green";
-        };
-        
-        diag_blue: led_ext_b {
-            gpios = <&gpio1 11 GPIO_ACTIVE_LOW>;
-            label = "External Blue";
         };
     };
 };
