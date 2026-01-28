@@ -26,7 +26,7 @@
 };
 
 / {
-    backlight {
+    backlight: backlight {
         compatible = "gpio-leds";
         label = "Backlight LEDs";
         led_0 {
