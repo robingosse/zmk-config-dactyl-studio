@@ -44,21 +44,25 @@
         device = <&ps2_mouse>;
     };
 
-    /* LED Settings - Corrected for Common Anode */
+/* LED Settings - Renamed to avoid conflicts with nice!nano onboard LEDs */
     leds {
         compatible = "gpio-leds";
         status = "okay";
-        red_led: led_red {
+        
+        diag_red: led_ext_r {
             gpios = <&gpio0 9 GPIO_ACTIVE_LOW>;
-            label = "Red LED";
+            label = "External Red";
         };
-        green_led: led_green {
+        
+        diag_green: led_ext_g {
             gpios = <&gpio0 10 GPIO_ACTIVE_LOW>;
-            label = "Green LED";
+            label = "External Green";
         };
-        blue_led: led_blue {
+        
+        /* Renamed from 'blue_led' to 'diag_blue' to fix the crash */
+        diag_blue: led_ext_b {
             gpios = <&gpio1 11 GPIO_ACTIVE_LOW>;
-            label = "Blue LED";
+            label = "External Blue";
         };
     };
 };
