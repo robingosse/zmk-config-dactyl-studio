@@ -1,6 +1,5 @@
 #include <dt-bindings/gpio/gpio.h>
 #include "dac_man_5x6.dtsi"
-#include <dt-bindings/zmk/backlight.h>
 
 &kscan {
     status = "okay";
@@ -26,17 +25,11 @@
     col-offset = <6>;
 };
 
-/ {
-    backlight: backlight {
-        compatible = "gpio-leds";
-        label = "Backlight LEDs";
-        led_0 {
-            gpios = <&gpio0 9 GPIO_ACTIVE_LOW>;
-            label = "Red backlight LED";
-        };
-    };
-    
-    chosen {
-        zmk,backlight = &backlight;
+&gpio0 {
+    red-led {
+        gpio-hog;
+        gpios = <9 GPIO_ACTIVE_LOW>;
+        output-low;
+        line-name = "red-led";
     };
 };
