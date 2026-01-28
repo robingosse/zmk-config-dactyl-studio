@@ -25,11 +25,17 @@
     col-offset = <6>;
 };
 
-&gpio0 {
-    /* Force P0.09 LOW to turn on red LED */
-    red-led-hog {
-        gpio-hog;
-        gpios = <9 GPIO_ACTIVE_HIGH>;
-        output-low;
+/ {
+    backlight {
+        compatible = "gpio-leds";
+        label = "Backlight LEDs";
+        led_0 {
+            gpios = <&gpio0 9 GPIO_ACTIVE_LOW>;
+            label = "Red backlight LED";
+        };
     };
+};
+
+&chosen {
+    zmk,backlight = &backlight;
 };
