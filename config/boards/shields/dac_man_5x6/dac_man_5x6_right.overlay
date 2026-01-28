@@ -71,10 +71,6 @@ debug_leds {
     };
 };
 
-&led_strip {
-    chain-length = <1>;
-};
-
 / {
     leds {
         compatible = "gpio-leds";
