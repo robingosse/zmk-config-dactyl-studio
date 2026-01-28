@@ -48,16 +48,16 @@
 debug_leds {
     compatible = "gpio-leds";
     debug_led_r: led_r {
-        gpios = <&gpio0 9 GPIO_ACTIVE_LOW>;  // Changed to LOW
+        gpios = <&gpio0 9 GPIO_ACTIVE_LOW>;
         label = "Debug Red LED";
     };
     debug_led_g: led_g {
-        gpios = <&gpio0 10 GPIO_ACTIVE_LOW>;  // Changed to LOW
+        gpios = <&gpio0 10 GPIO_ACTIVE_LOW>;
         label = "Debug Green LED";
     };
     debug_led_b: led_b {
-        gpios = <&gpio1 11 GPIO_ACTIVE_LOW>;  // Changed to LOW
+        gpios = <&gpio1 11 GPIO_ACTIVE_LOW>;
         label = "Debug Blue LED";
     };
-    };
+};
 };
