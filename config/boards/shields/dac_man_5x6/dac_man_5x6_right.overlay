@@ -1,5 +1,6 @@
 #include <dt-bindings/gpio/gpio.h>
 #include "dac_man_5x6.dtsi"
+#include <dt-bindings/zmk/backlight.h>
 
 &kscan {
     status = "okay";
