@@ -1,4 +1,5 @@
 #include <dt-bindings/gpio/gpio.h>
+#include <dt-bindings/led/led.h>
 #include "dac_man_5x6.dtsi"
 
 &kscan {
@@ -26,29 +27,26 @@
 
 / {
     chosen {
-        /* MAP BACKLIGHT TO RED LED (Pin 0.09) */
-        zmk,backlight = &led_red;
+        zmk,underglow = &led_strip;
     };
 
-    leds {
+    led_strip: leds {
         compatible = "gpio-leds";
-        status = "okay";
+        label = "RGB LEDs";
         
-        /* RED (P0.09) - Active Low (Ground to turn on) */
-        led_red: led_ext_r {
-            gpios = <&gpio0 9 GPIO_ACTIVE_LOW>;
-            label = "External Red";
+        led_red: led_0 {
+            gpios = <&gpio0 9 (GPIO_ACTIVE_LOW)>;
+            label = "Red LED";
         };
-
-        /* We define these so the compiler doesn't complain, 
-           but only RED will light up automatically right now. */
-        led_green: led_ext_g {
-            gpios = <&gpio0 10 GPIO_ACTIVE_LOW>;
-            label = "External Green";
+        
+        led_green: led_1 {
+            gpios = <&gpio0 10 (GPIO_ACTIVE_LOW)>;
+            label = "Green LED";
         };
-        led_blue: led_ext_b {
-            gpios = <&gpio1 11 GPIO_ACTIVE_LOW>;
-            label = "External Blue";
+        
+        led_blue: led_2 {
+            gpios = <&gpio1 11 (GPIO_ACTIVE_LOW)>;
+            label = "Blue LED";
         };
     };
 };
