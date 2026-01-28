@@ -34,8 +34,8 @@
             label = "Red backlight LED";
         };
     };
-};
-
-&chosen {
-    zmk,backlight = &backlight;
+    
+    chosen {
+        zmk,backlight = &backlight;
+    };
 };
