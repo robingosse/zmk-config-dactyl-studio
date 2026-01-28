@@ -1,7 +1,6 @@
 #include <dt-bindings/gpio/gpio.h>
 #include "dac_man_5x6.dtsi"
 
-/* KSCAN Settings - Matrix Pins */
 &kscan {
     status = "okay";
     col-gpios
@@ -21,20 +20,18 @@
         ;
 };
 
-/* Matrix Transform */
 &default_transform {
     col-offset = <6>;
 };
 
-/* Root Node - Everything else lives here */
 / {
     chosen {
-        /* "Backlight" Hack: We map this to the BLUE LED (P1.11) for testing.
-           P1.11 is safer than Red/Green because it doesn't need the NFC unlock. */
+        /* We map the Backlight to the BLUE LED (P1.11).
+           This forces ZMK to turn it on at boot. */
         zmk,backlight = &diag_blue;
     };
 
-    /* PS/2 Driver Settings */
+    /* PS/2 Mouse Settings */
     gpio_ps2: gpio_ps2 {
         compatible = "gpio-ps2";
         status = "okay";
@@ -53,26 +50,24 @@
         device = <&ps2_mouse>;
     };
 
-/* LED Settings - Force ON Mode */
+    /* LED Settings */
     leds {
         compatible = "gpio-leds";
         status = "okay";
         
-        /* We force the BLUE LED on by default */
-        diag_blue: led_ext_b {
-            gpios = <&gpio1 11 GPIO_ACTIVE_LOW>;
-            label = "External Blue";
-            default-state = "on"; 
-        };
-
-        /* Red and Green are available but off for now */
         diag_red: led_ext_r {
             gpios = <&gpio0 9 GPIO_ACTIVE_LOW>;
             label = "External Red";
         };
+        
         diag_green: led_ext_g {
             gpios = <&gpio0 10 GPIO_ACTIVE_LOW>;
             label = "External Green";
+        };
+        
+        diag_blue: led_ext_b {
+            gpios = <&gpio1 11 GPIO_ACTIVE_LOW>;
+            label = "External Blue";
         };
     };
 };
