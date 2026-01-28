@@ -53,24 +53,26 @@
         device = <&ps2_mouse>;
     };
 
-    /* LED Settings */
+/* LED Settings - Force ON Mode */
     leds {
         compatible = "gpio-leds";
         status = "okay";
         
+        /* We force the BLUE LED on by default */
+        diag_blue: led_ext_b {
+            gpios = <&gpio1 11 GPIO_ACTIVE_LOW>;
+            label = "External Blue";
+            default-state = "on"; 
+        };
+
+        /* Red and Green are available but off for now */
         diag_red: led_ext_r {
             gpios = <&gpio0 9 GPIO_ACTIVE_LOW>;
             label = "External Red";
         };
-        
         diag_green: led_ext_g {
             gpios = <&gpio0 10 GPIO_ACTIVE_LOW>;
             label = "External Green";
-        };
-        
-        diag_blue: led_ext_b {
-            gpios = <&gpio1 11 GPIO_ACTIVE_LOW>;
-            label = "External Blue";
         };
     };
 };
