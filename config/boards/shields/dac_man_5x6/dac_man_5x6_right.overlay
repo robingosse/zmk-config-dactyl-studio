@@ -48,36 +48,45 @@
 debug_leds {
     compatible = "gpio-leds";
     debug_led_r: led_r {
-        gpios = <&gpio0 9 GPIO_ACTIVE_LOW>;
+        gpios = <&gpio0 9 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         label = "Debug Red LED";
     };
     debug_led_g: led_g {
-        gpios = <&gpio0 10 GPIO_ACTIVE_LOW>;
+        gpios = <&gpio0 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         label = "Debug Green LED";
     };
     debug_led_b: led_b {
-        gpios = <&gpio1 11 GPIO_ACTIVE_LOW>;
+        gpios = <&gpio1 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         label = "Debug Blue LED";
     };
-};
-};
-
-/ {
-    leds {
-        compatible = "gpio-leds";
-        blue_led: led_0 {
-            gpios = <&gpio1 11 GPIO_ACTIVE_LOW>;
-        };
     };
 };
+
+
 
 / {
     leds {
         compatible = "gpio-leds";
         status = "okay";
+        red_led: led_0 {
+            gpios = <&gpio0 09 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+            label = "Red LED";
+        };
+    };
+    leds {
+        compatible = "gpio-leds";
+        status = "okay";
         green_led: led_0 {
-            gpios = <&gpio0 10 GPIO_ACTIVE_LOW>;
+            gpios = <&gpio0 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
             label = "Green LED";
+        };
+    };
+    leds {
+        compatible = "gpio-leds";
+        status = "okay";
+        blue_led: led_0 {
+            gpios = <&gpio0 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+            label = "Blue LED";
         };
     };
 };
