@@ -74,3 +74,14 @@ debug_leds {
 &led_strip {
     chain-length = <1>;
 };
+
+/ {
+    leds {
+        compatible = "gpio-leds";
+        status = "okay";
+        green_led: led_0 {
+            gpios = <&gpio0 10 GPIO_ACTIVE_LOW>;
+            label = "Green LED";
+        };
+    };
+};
