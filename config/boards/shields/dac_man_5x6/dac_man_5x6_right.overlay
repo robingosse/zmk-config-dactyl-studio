@@ -25,11 +25,25 @@
     col-offset = <6>;
 };
 
-&gpio0 {
-    red-led {
-        gpio-hog;
-        gpios = <9 GPIO_ACTIVE_LOW>;
-        output-low;
-        line-name = "red-led";
+/ {
+    /* PS/2 GPIO Device */
+    gpio_ps2: gpio_ps2 {
+        compatible = "gpio-ps2";
+        status = "okay";
+        scl-gpios = <&gpio1 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;  // Clock on P1.02
+        sda-gpios = <&gpio1 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;  // Data on P1.01
+    };
+
+    /* PS/2 Mouse Input Device */
+    ps2_mouse: ps2_mouse {
+        compatible = "zmk,input-mouse-ps2";
+        status = "okay";
+        ps2-device = <&gpio_ps2>;
+    };
+
+    /* Input Listener for Mouse Movement */
+    mmv_input_listener {
+        compatible = "zmk,input-listener";
+        device = <&ps2_mouse>;
     };
 };
