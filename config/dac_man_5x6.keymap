@@ -38,8 +38,8 @@
 &kp ESC      &kp N        &kp D         &kp P        &kp L        &kp LPAR                                &kp RPAR     &kp T            &kp J        &kp Q        &kp U        &kp BSPC
 &kp TAB      &mt LGUI R   &mt LALT S    &mt LCTRL H  &mt LSHIFT W &kp B                                   &kp E        &mt LSHIFT O     &mt RCTRL Y  &mt RALT G   &mt RGUI F   &kp DEL
 &kp PSCRN    &kp Z        &kp X         &kp C        &kp V        &kp EXCL                                &kp QMARK    &kp A            &kp I        &kp K        &kp M        &kp RET
-                          &kp UP        &kp DOWN                                                                                        &kp C_VOL_UP &kp C_VOL_DN
-&kp X        &kp MINUS    &kp SQT       &kp X        &mo 2        &mo 1                                   &kp C_PP     &kp COMMA        &kp PERIOD   &mo 1    &mo 2        &kp LC(S)
+                          &kp UP        &kp DOWN                                                                                        &kp LEFT &kp RIGHT
+&kp C_PP        &kp MINUS    &kp SQT       &kp X        &mo 2        &mo 1                                   &kp SPACE     &kp COMMA        &kp PERIOD   &mo 1    &mo 2        &kp LC(S)
 
             >;
         };
@@ -52,7 +52,7 @@
 &kp SEMI     &kp LPAR     &kp RPAR     &kp N4       &kp N5       &kp N6                                    &kp N4       &kp N5       &kp N6       &kp LEFT     &kp UP       &kp RIGHT
 &kp BSLH     &kp LBKT     &kp RBKT     &kp N1       &kp N2       &kp N3                                    &kp N1       &kp N2       &kp N3       &kp END      &kp DOWN     &kp PG_DN
                           &kp SLASH    &kp N0                                                                                        &kp N0       &kp DOT
-&bootloader &trans      &trans      &trans       &trans       &trans                                    &trans       &trans       &bl BL_INC      &bl BL_ON       &bl BL_TOG       &bootloader
+&bootloader &trans      &trans      &trans       &trans       &trans                                    &trans       &trans       &trans       &trans       &trans       &bootloader
 
 
             >;
